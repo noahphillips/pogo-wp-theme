@@ -1,0 +1,12 @@
+{% if menu %}
+	<div class="nav-trigger-box">
+		<span class="nav-trigger"></span>
+	</div>
+	<nav class="nav">
+		<div class="nav-items">
+		{% for item in menu %}
+			<div class="nav-item"><a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a></div>
+		{% endfor %}
+		</div>
+	</nav>
+{% endif %}
