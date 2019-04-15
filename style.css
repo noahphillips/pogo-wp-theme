@@ -131,11 +131,11 @@ button {
   border: none;
 }
 
-.title {
+.title, [id^=post-] h3, [id^=post-] h2 {
   margin-bottom: 0.5em;
   line-height: 1.2;
 }
-.title.is-centered {
+.title.is-centered, [id^=post-] h3.is-centered, [id^=post-] h2.is-centered {
   max-width: 58.75rem;
   margin: auto;
 }
@@ -143,11 +143,11 @@ button {
   font-size: 3.75rem;
   font-family: "Guillon-Thin", sans-serif;
 }
-.title-2 {
+.title-2, [id^=post-] h2 {
   font-family: "Guillon-Light", sans-serif;
   font-size: 2.25rem;
 }
-.title-3 {
+.title-3, [id^=post-] h3 {
   font-family: "Guillon", sans-serif;
   font-size: 1.25rem;
 }
@@ -222,7 +222,7 @@ a:hover {
   }
 }
 
-#body-container {
+#pogo-body-container {
   width: 100vw;
   height: 100%;
   max-width: 1920px;
