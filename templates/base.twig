@@ -8,7 +8,13 @@
 
 	<body class="{{body_class}}" data-template="base.twig">
 		{% if "terms-and-conditions" in post.link %}
-			{% include "partial/circles-brgb.twig" %}
+			{% include "partial/css-circles-brgb.twig" %}
+		{% elseif "privacy-policy" in post.link %}
+			{% include "partial/css-circles-byrb.twig" %}
+		{% elseif "patent-information" in post.link %}
+			{% include "partial/css-circles-rbro.twig" %}
+		{% elseif "about-intuity-medical" in post.link%}
+			{% include "partial/css-circles-brgb.twig" %}
 		{% endif %}
 		{# <a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a> #}
 		<div id="pogo-body-container">
