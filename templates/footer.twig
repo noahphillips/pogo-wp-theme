@@ -1,42 +1,50 @@
 {# <footer id="footer" > #}
-  <div class="footer-content">
-    <section class="footer-links">
-      <div class="footer-link">
-        <a href="#">About Intuity</a>
-        <ul>
-          <li><a href="#">Investors</a></li>
-          <li><a href="#">Leadership</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-link">
-        <a href="contact.html">Contact us</a>
-      </div>
-      <div class="footer-link">
-        <a href="terms.html">Terms of Use</a>
-      </div>
-      <div class="footer-link">
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
-      <div class="footer-link">
-        <a href="patent.html">Patent Information</a>
-      </div>
-    </section>
-    <section class="footer-branding">
-      <div class="footer-brand">
-        <div class="flex flex-align-center flex-gap-sml">
-          <a href="#"><img src="/wp-content/uploads/2019/04/brand.svg" alt="Intuity"></a>
-          <span>|</span>
-          <span>Simplifying Diabetes</span>
-        </div>
-        <p>&copy; Intuity Medical, Inc. All rights reserved.</p>
-      </div>
-      <div class="footer-socials">
-        <a href="#"><img src="/wp-content/uploads/2019/04/fb.svg" alt="facebook"></a>
-        <a href="#"><img src="/wp-content/uploads/2019/04/twitter.svg" alt="twitter"></a>
-        <a href="#"><img src="/wp-content/uploads/2019/04/insta.svg" alt="instagram"></a>
-        <a href="#"><img src="/wp-content/uploads/2019/04/linkedin.svg" alt="linkedin"></a>
-      </div>
-    </section>
-  </div>
+<div class="footer-content">
+	<section class="footer-links">
+		<div class="footer-link">
+			<a href="#">About Intuity</a>
+			<ul>
+				<li><a href="#">Investors</a></li>
+				<li><a href="#">Leadership</a></li>
+				<li><a href="#">Careers</a></li>
+			</ul>
+		</div>
+		<div class="footer-link">
+			<a href="contact.html">Contact us</a>
+		</div>
+		<div class="footer-link">
+			<a href="terms.html">Terms of Use</a>
+		</div>
+		<div class="footer-link">
+			<a href="privacy.html">Privacy Policy</a>
+		</div>
+		<div class="footer-link">
+			<a href="patent.html">Patent Information</a>
+		</div>
+	</section>
+	<section class="footer-branding">
+		<div class="footer-brand">
+			<div class="flex flex-align-center flex-gap-sml">
+				<a href="#"><img src="/wp-content/uploads/2019/04/brand.svg" alt="Intuity"></a>
+				<span>|</span>
+				<span>Simplifying Diabetes</span>
+			</div>
+			<p>&copy; Intuity Medical, Inc. All rights reserved.</p>
+		</div>
+
+		{% if show_footer_social %}
+			<ul class='footer-socials'>
+				{% for social in social_networks %}
+					<a class="footer__social-icon" itemprop="url" href="{{ social.url }}" target="_blank" style="background-image:url({{ theme.uri }}/assets/img/icon-{{ social.name}}.svg"></a>
+				{% endfor %}
+			</ul>
+		{% endif %}
+		<div class="footer-socials">
+			<a href="#"><img src="/wp-content/uploads/2019/04/fb.svg" alt="facebook"></a>
+			<a href="#"><img src="/wp-content/uploads/2019/04/twitter.svg" alt="twitter"></a>
+			<a href="#"><img src="/wp-content/uploads/2019/04/insta.svg" alt="instagram"></a>
+			<a href="#"><img src="/wp-content/uploads/2019/04/linkedin.svg" alt="linkedin"></a>
+		</div>
+	</section>
+</div>
 {# </footer> #}

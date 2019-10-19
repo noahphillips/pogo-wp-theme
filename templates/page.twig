@@ -1,27 +1,20 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+	<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
 		<section class="heading-content">
-			<h1 class="title title-1 is-centered is-grey">{{post.title}}</h1>
+			<h1 class="title title-1 is-centered is-grey">{{ post.title }}</h1>
 		</section>
-		
-		<main class="has-zindex-2">
+
+		<main class="site-content">
+			{% if(true) %}
+				<img class="heading-icon" src="{{ site.theme.link }}/images/rings.svg">
+			{%  endif %}
 			<div class="content is-grey">
-				{{post.content}}
+				{{ post.content }}
 			</div>
 		</main>
 
 	</article>
 	{% include "partial/modal-signin.twig" %}
 {% endblock %}
-	{# <div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-		</article>
-	</div><!-- /content-wrapper --> #}
