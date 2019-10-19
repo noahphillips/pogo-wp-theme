@@ -1,34 +1,34 @@
 {% block html_head_container %}
 
-{% include 'html-header.twig' %}
+	{% include 'html-header.twig' %}
 	{% block head %}
 	{% endblock %}
 	</head>
 {% endblock %}
 
-	<body class="{{body_class}}" data-template="base.twig">
-		{# <a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a> #}
-		<div id="pogo-body-container">
-			<header id="header" class="main-background">
-				{% block header %}
-					<div class="header-content">
-						<a href="/" class="header-logo"> <img src="/wp-content/uploads/2019/04/logo.png" alt="" class="logo" /> </a>
-						<button class="header-button" data-modal="sign-in">Sign In</button>
-						{% include "menu.twig" with {'menu': menu.get_items} %}
-					</div>
-				{% endblock %}
-			</header>
-			{% block content %}
-			{% endblock %}
+<body class="{{ body_class }}" data-template="base.twig">
+{# <a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a> #}
+<div id="pogo-body-container">
+	<header id="header" class="main-background">
+		{% block header %}
+			<div class="header-content">
+				<a href="/" class="header-logo"> <img src="{{ site.theme.link }}/static/images/logo.svg" alt="" class="logo"/> </a>
+				<button class="header-button" data-modal="sign-in">Sign In</button>
+				{% include "menu.twig" with {'menu': menu.get_items} %}
+			</div>
+		{% endblock %}
+	</header>
+
+	{% block content %}
+	{% endblock %}
 
 
-			{% block footer %}
-				<footer id="footer" class="main-background">
-					{% include 'footer.twig' %}
-				</footer>
-				{{ function('wp_footer') }}
-			{% endblock %}
-		</div>
-		<script src="/wp-content/themes/pogo/static/events.js"></script>
-	</body>
+	{% block footer %}
+		<footer id="footer" class="main-background">
+			{% include 'footer.twig' %}
+		</footer>
+		{{ function('wp_footer') }}
+	{% endblock %}
+</div>
+</body>
 </html>

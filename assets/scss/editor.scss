@@ -1,0 +1,94 @@
+// Base
+@import './base/variables';
+@import './base/reset';
+@import './base/base';
+@import './base/colors';
+
+
+// Prefixes all of the styles with `.editor-styles-wrapper` for use within the
+// block editor.
+.editor-styles-wrapper {
+	// Layouts
+	@import './layouts/base';
+	@import './layouts/body-container';
+	@import './layouts/header';
+	@import './layouts/footer';
+	@import './layouts/main-info';
+	@import './layouts/modal';
+	@import './layouts/helpers';
+
+	// Modules
+	@import './modules/logo';
+	@import './modules/dots';
+	@import './modules/videos';
+	@import './modules/slide';
+	@import './modules/newsletter-signup';
+	@import './modules/circles';
+	@import './modules/background-circles';
+	@import './modules/nav-trigger';
+	@import './modules/main-nav';
+	@import './modules/heading';
+	@import './modules/sign-in';
+	@import './modules/contact';
+	@import './modules/header-content';
+	@import './modules/footer-content';
+
+	// Vendors
+	@import './vendors/full-page';
+
+	* {
+		color: inherit;
+	}
+
+	.editor-block-mover__control {
+		background-color: white;
+	}
+
+	.editor-block-list__block-edit {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+	}
+
+	.u-full-width {
+		position: relative;
+		left: 50%;
+		width: calc(100vw - 36px);
+		margin-left: calc(18px - 50vw);
+		overflow-x: hidden;
+
+		@media (min-width: 960px) {
+			width: calc(100vw - 160px);
+			margin-left: calc(80px - 50vw);
+		}
+	}
+
+	.wp-block {
+		max-width: 100%;
+	}
+
+	.editor-block-list__layout {
+
+	}
+
+	.acf-block-preview {
+		pointer-events: none;
+	}
+
+}
+
+
+
+.edit-post-layout {
+	&.is-sidebar-opened {
+		.edit-post-layout__content {
+			margin-right: 0;
+		}
+
+		.edit-post-sidebar {
+			@media (min-width: 1200px) {
+				width: 450px;
+			}
+		}
+	}
+}
+
