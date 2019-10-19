@@ -1,0 +1,89 @@
+$sizes: (
+  "sml": .5,
+  "med": .8,
+  "lrg": 1.2,
+  "xlrg": 2
+);
+
+/**
+// Usage
+
+.my-box {
+  padding: map-get($sizes, "sml") + rem;
+}
+*/
+
+$fontSizes: (
+  "sml"   : 16,
+  "med"   : 20,
+  "lrg"   : 36,
+  "xlrg"  : 60
+);
+
+/**
+// Usage
+
+.my-font {
+  font-size: map-get($fontSizes, "sml") / 16 + rem;
+}
+*/
+
+
+$contentWidth: 940px;
+// $grey-dark: #6d6e70;
+$grey-dark: darken(#6d6e70, 20%);
+
+$blue: #25a9e0;
+$white: #ffffff;
+$body_color: #ffffff;
+
+@mixin for-size($range) {
+  $phone-upper-boundary: 600px;
+  $tablet-portrait-upper-boundary: 900px;
+  $tablet-landscape-upper-boundary: 1200px;
+  $desktop-upper-boundary: 1800px;
+
+  @if $range == phone-only {
+    @media (max-width: #{$phone-upper-boundary - 1}) { @content; }
+  } @else if $range == tablet-portraite-only {
+    @media(max-width: $tablet-portrait-upper-boundary - 1) { @content; }
+  } @else if $range == tablet-portrait-up {
+    @media (min-width: $phone-upper-boundary) { @content; }
+  } @else if $range == tablet-landscape-up {
+    @media (min-width: $tablet-portrait-upper-boundary) { @content; }
+  } @else if $range == desktop-up {
+    @media (min-width: $tablet-landscape-upper-boundary) { @content; }
+  } @else if $range == big-desktop-up {
+    @media (min-width: $desktop-upper-boundary) { @content; }
+  }
+}
+/**
+// Usage
+
+.my-box {
+  padding: 10px;
+
+  @include for-size(desktop-up) {
+    padding: 20px;
+  }
+}
+*/
+
+@mixin flexContainer($dir: flex-start, $gap: .3rem, $auto: true, $basis: false) {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: #{$dir};
+  margin: 0 -#{$gap};
+  & > * { margin: 0 #{$gap};}
+  @if $auto { & > * { flex: 1 1 auto; } }
+  @if $basis { & > * { flex: 1 1 #{$basis}; } }
+}
+
+/**
+// Usage
+
+.my-box {
+  @include flexContainer(flex-end, 1em, $auto: false, 250px);
+}
+**/

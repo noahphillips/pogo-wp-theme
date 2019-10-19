@@ -1,0 +1,83 @@
+// Display
+@each $key, $val in $sizes {
+  .flex-gap-#{$key} {
+    margin: 0 -#{$val} + rem;
+    & > * {
+      margin: 0 #{$val} + rem;
+      display: block;
+    }
+  }
+  .has-top-pad-#{$key} {
+    padding-top: #{$val} + rem;
+  }
+  .has-bottom-pad-#{$key} {
+    padding-bottom: #{$val} + rem;
+  }
+  .has-right-pad-#{$key} {
+    padding-right: #{$val} + rem;
+  }
+  .has-left-pad-#{$key} {
+    padding-left: #{$val} + rem;
+  }
+  .has-top-marg-#{$key} {
+    margin-top: #{$val} + rem;
+  }
+  .has-bottom-marg-#{$key} {
+    margin-bottom: #{$val} + rem;
+  }
+  .has-left-marg-#{$key} {
+    margin-bottom: #{$val} + rem;
+  }
+  .has-right-marg-#{$key} {
+    margin-bottom: #{$val} + rem;
+  }
+}
+
+.has-zindex-2 { z-index: 2; }
+
+.has-bullets {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  // & > * { flex: 1 1 250px;}
+
+  &-center { justify-content: center; }
+  &-align-center { align-items: center; }
+  &-space-between { justify-content: space-between; }
+  &-end { justify-content: flex-end; }
+  &-start { justify-content: flex-start; }
+
+}
+
+
+// Text
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+
+.font-thin { font-family: "Guillon-Thin", sans-serif; }
+.font-light { font-family: "Guillon-Light", sans-serif; }
+
+// Colors
+.is-grey { color: $grey-dark; }
+.is-blue { color: $blue; }
+.is-white { color: $white; }
+.is-laptop-white {
+  @include for-size(tablet-landscape-up) {
+    color: $white;
+  }
+}
+.is-laptop-grey {
+  @include for-size(tablet-landscape-up) {
+    color: $grey-dark;
+  }
+}
+
+.is-tablet-hidden {
+  display: block;
+  @include for-size(tablet-portraite-only) { display: none; }
+}

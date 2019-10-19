@@ -1,0 +1,40 @@
+object { display: block;}
+.main-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &-center {
+    background-position: center center;
+  }
+  &-right-center {
+    background-position: right center;
+  }
+  &-left-center {
+    background-position: left center;
+  }
+}
+
+.section {
+  height: 100vh;
+}
+
+.site-content {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  @media all and (min-width: 75em) {
+    padding-top: 5.7rem;
+    padding-bottom: 10rem;
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 940px;
+  flex: 1 0 auto;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+
+  @media all and (min-width: 75rem) {
+    padding: 7rem 0;
+  }
+}

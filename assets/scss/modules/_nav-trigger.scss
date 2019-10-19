@@ -1,0 +1,53 @@
+$trigWidth: 2.5rem;
+$trigHeight: 4px;
+
+.nav-trigger {
+  margin-top: 12px;
+  display: block;
+  width: $trigWidth;
+  height: $trigHeight;
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  transition: background-color .3s;
+
+  &.is-active {
+    background-color: transparent;
+
+    &:before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+    &:after {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:before {
+    content: " ";
+    display: block;
+    width: $trigWidth;
+    height: $trigHeight;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: -10px;
+    transition: transform .3s;
+  }
+  &:after {
+    content: " ";
+    display: block;
+    width: $trigWidth;
+    height: $trigHeight;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -10px;
+    transition: transform .3s;
+  }
+  &-box {
+    height: 32px; 
+    cursor: pointer;
+  }
+}

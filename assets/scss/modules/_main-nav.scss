@@ -1,0 +1,31 @@
+.nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s;
+  position: absolute;
+  z-index: 4;
+  background-color: white;
+  padding: 0;
+  top: 0; right: 0; left: auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+              0 0 40px rgba(white, 0.1) inset;
+
+  &-item {
+    font-size: 1rem;
+    font-family: "Guillon-Thin", sans-serif;
+    border-bottom: 1px solid lighten(#6d6e70, 33%);
+    transition: color .3s, background-color .3s;
+    &:last-child { border-bottom: 0; }
+    &:hover {
+      background-color: $blue;
+      a, span { color: white; cursor: pointer;}
+    }
+
+    a, span {
+      padding: 1rem 1.6rem;
+      display: block;
+      color:#6d6e70;
+      transition: color .3s;
+    }
+  }
+}
