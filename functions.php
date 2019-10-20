@@ -371,6 +371,7 @@ class StarterSite extends Timber\Site {
 
 		wp_register_script( 'scriptjs', get_stylesheet_directory_uri() . '/static/script.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/script.js' ), true );
 		wp_register_script( 'events', get_stylesheet_directory_uri() . '/static/events.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/events.js' ), true );
+		wp_register_script( 'custom', get_stylesheet_directory_uri() . '/assets/js/custom.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/assets/js/custom.js' ), true );
 
 		wp_enqueue_style( 'fontawesome', '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 'all' );
 		wp_enqueue_style( 'fonts', get_stylesheet_directory_uri() . '/static/fonts/fonts.css', false, get_version( '/fonts/fonts.css' ), 'all' );
@@ -378,6 +379,7 @@ class StarterSite extends Timber\Site {
 		wp_enqueue_style( 'custom', get_stylesheet_directory_uri() . '/css/custom.css', false, '1.0.0', 'all' );
 
 		wp_enqueue_script( 'events' );
+		wp_enqueue_script( 'custom' );
 		if ( is_front_page() ) {
 //			wp_enqueue_script('scriptjs');
 		}

@@ -16,7 +16,29 @@
 			<div class="content is-grey">
 				{{ post.content }}
 
-{#				{{ dump(fields.items) }}#}
+
+				{% if(post.meta('items')) %}
+					<p>&nbsp;</p>
+					<h2 class="title title-2" data-toc="heading">{{ _e('TABLE OF CONTENTS', TEXT_DOMAIN) }}</h2>
+
+					<ul class="table-contents">
+						{% for item in post.meta('items') %}
+							<li>
+								<a class="js-page-nav-link" href="#item-{{ item.title|replace({' ' : '-', ';': ''})|lower }}">{{ loop.index }}. {{ item.title }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<p>&nbsp;</p>
+					<div class="item-list-row">
+						{% for item in post.meta('items') %}
+							<div id="item-{{ item.title|replace({' ' : '-', ';': ''})|lower }}" class="item">
+								<h3 class="title title-3">{{ item.title }}</h3>
+								<div>{{ item.content }}</div>
+							</div>
+						{% endfor %}
+					</div>
+
+				{% endif %}
 
 			</div>
 		</main>
