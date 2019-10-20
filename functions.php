@@ -71,6 +71,21 @@ function pogo_get_social_sites() {
 	return $social_sites;
 }
 
+/**
+ * Allow SVG Upload Support
+ *
+ * @link   https://kinsta.com/blog/wordpress-svg/
+ * @link   https://css-tricks.com/snippets/wordpress/allow-svg-through-wordpress-media-uploader/
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+add_filter( 'upload_mimes', function ( $mimes ) {
+	$mimes['svg']  = 'image/svg+xml';
+	$mimes['svgz'] = 'image/svg+xml';
+
+	return $mimes;
+} );
 
 /**
  * We're going to configure our theme inside of a subclass of Timber\Site
@@ -90,6 +105,7 @@ class StarterSite extends Timber\Site {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_and_styles' ) );
 		parent::__construct();
 	}
+
 
 	/**
 	 * Adding browser specific classes
@@ -172,7 +188,7 @@ class StarterSite extends Timber\Site {
 
 		if(is_front_page()) {
 //			wp_enqueue_script('scriptjs');
-//			wp_enqueue_script('events');
+			wp_enqueue_script('events');
 		}
 
 	}
@@ -199,6 +215,99 @@ class StarterSite extends Timber\Site {
 	 * @link      https://pogo.com
 	 */
 	function register_customizer_options( $wp_customize ) {
+
+		// Add setting for mobile menu logo uploader
+		$wp_customize->add_setting( 'site_logo' );
+
+		// Add control for mobile menu logo uploader (actual uploader)
+		/**
+		 * Site Logo control.
+		 *
+		 * - Control: Image: Site Logo
+		 * - Setting: Site Logo
+		 * - Sanitization: input
+		 *
+		 * Register the core "input" file upload control to be used to configure the Site Logo setting.
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 * */
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'site_logo', array(
+			'label'    => __( 'Site Logo', TEXT_DOMAIN ),
+			'section'  => 'title_tagline',
+			'settings' => 'site_logo',
+			'priority' => 9,
+		) ) );
+
+
+		// Add setting for footer logo uploader
+		$wp_customize->add_setting( 'footer_logo' );
+
+		// Add control for footer logo uploader (actual uploader)
+		/**
+		 * Footer Logo control.
+		 *
+		 * - Control: Image: Footer Logo
+		 * - Setting: Footer Logo
+		 * - Sanitization: input
+		 *
+		 * Register the core "input" file upload control to be used to configure the Footer Logo setting.
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 * */
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'footer_logo', array(
+			'label'    => __( 'Footer Logo', TEXT_DOMAIN ),
+			'section'  => 'title_tagline',
+			'settings' => 'footer_logo',
+			'priority' => 9,
+		) ) );
+
+
+
+		/**
+		 * Footer Copyright setting example.
+		 *
+		 * - Setting: Footer Copyright
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Facebook Pixel Code for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'pogo_footer_copyrights',
+			// $args
+			array(
+				'default' => '&copy; Intuity Medical, Inc. All rights reserved.',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Footer Copyrights
+		 *
+		 * Register the core "text" control to be used to configure the Footer Copyrights Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'pogo_footer_copyrights',
+			// $args
+			array(
+				'settings'    => 'pogo_footer_copyrights',
+				'section'     => 'title_tagline',
+				'type'        => 'text',
+				'label'       => __( 'Footer Copyrights ', TEXT_DOMAIN ),
+			)
+		);
 
 
 		/**

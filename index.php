@@ -13,11 +13,20 @@
  * @since   Timber 0.1
  */
 
-$context          = Timber::context();
-$context['posts'] = new Timber\PostQuery();
-$context['foo']   = 'bar';
-$templates        = array( 'index.twig' );
+$site_logo         = get_theme_mod( 'site_logo' );
+$footer_logo       = get_theme_mod( 'footer_logo' );
+$footer_copyrights = get_theme_mod( 'pogo_footer_copyrights' );
+
+
+$context                      = Timber::context();
+$context['posts']             = new Timber\PostQuery();
+$context['site_logo']         = $site_logo;
+$context['footer_logo']       = $footer_logo;
+$context['footer_copyrights'] = $footer_copyrights;
+$templates                    = array( 'index.twig' );
+
 if ( is_home() ) {
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );
 }
+
 Timber::render( $templates, $context );

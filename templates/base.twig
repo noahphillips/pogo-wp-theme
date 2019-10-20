@@ -6,22 +6,32 @@
 	</head>
 {% endblock %}
 
+{# Set default image for site logo #}
+{% set site_logo_url =  site.theme.link ~ '/static/images/logo.svg' %}
+
+{# If site logo is passed in Customizer, then pass this URL instead of the default one #}
+{% if site_logo %}
+	{% set site_logo_url = site_logo %}
+{% endif %}
+
+
 <body class="{{ body_class }}" data-template="base.twig">
 {# <a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a> #}
 <div id="pogo-body-container">
 	<header id="header" class="main-background">
 		{% block header %}
 			<div class="header-content">
-				<a href="/" class="header-logo"> <img src="{{ site.theme.link }}/static/images/logo.svg" alt="" class="logo"/> </a>
-				<button class="header-button" data-modal="sign-in">Sign In</button>
-				{% include "menu.twig" with {'menu': menu.get_items} %}
+				<a href="/" class="header-logo"> <img src="{{ site_logo_url }}" alt="" class="logo"/> </a>
+				<div class="header-controls">
+					<button class="header-button" data-modal="sign-in">Sign In</button>
+					{% include "menu.twig" with {'menu': menu.get_items} %}
+				</div>
 			</div>
 		{% endblock %}
 	</header>
 
 	{% block content %}
 	{% endblock %}
-
 
 	{% block footer %}
 		<footer id="footer" class="main-background">
