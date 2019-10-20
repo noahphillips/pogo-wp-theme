@@ -16,14 +16,15 @@
 $site_logo         = get_theme_mod( 'site_logo' );
 $footer_logo       = get_theme_mod( 'footer_logo' );
 $footer_copyrights = get_theme_mod( 'pogo_footer_copyrights' );
+$gtm_script_tag    = get_theme_mod( 'pogo_gtm_script' );
 
-
-$context                      = Timber::context();
-$context['posts']             = new Timber\PostQuery();
-$context['site_logo']         = $site_logo;
-$context['footer_logo']       = $footer_logo;
-$context['footer_copyrights'] = $footer_copyrights;
-$templates                    = array( 'index.twig' );
+$context                            = Timber::context();
+$context['posts']                   = new Timber\PostQuery();
+$context['site_logo']               = $site_logo;
+$context['footer_logo']             = $footer_logo;
+$context['footer_copyrights']       = $footer_copyrights;
+$context['footer_main_widget_area'] = Timber::get_widgets( 'footer_main_widget_area' );
+$templates                          = array( 'index.twig' );
 
 if ( is_home() ) {
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );

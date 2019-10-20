@@ -21,8 +21,19 @@
  * @since    Timber 0.1
  */
 
+$site_logo         = get_theme_mod( 'site_logo' );
+$footer_logo       = get_theme_mod( 'footer_logo' );
+$footer_copyrights = get_theme_mod( 'pogo_footer_copyrights' );
+$gtm_script_tag    = get_theme_mod( 'pogo_gtm_script' );
+
 $context = Timber::context();
 
 $timber_post = new Timber\Post();
 $context['post'] = $timber_post;
+$context['site_logo']               = $site_logo;
+$context['footer_logo']             = $footer_logo;
+$context['footer_copyrights']       = $footer_copyrights;
+$context['footer_main_widget_area'] = Timber::get_widgets( 'footer_main_widget_area' );
+
+
 Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
