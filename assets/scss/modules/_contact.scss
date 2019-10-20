@@ -1,7 +1,10 @@
 .contact {
 
-  [data-map="google"] {
-    padding-top: 2rem;
-    iframe { width: 100%;}
-  }
+	[data-map="google"] {
+		padding-top: 2rem;
+
+		iframe {
+			width: 100%;
+		}
+	}
 }

@@ -1,20 +1,22 @@
 .slide {
-  &-content {
-    height: 100%;
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
-  }
+
+	&-content {
+		height: 100%;
+		max-width: 750px;
+		margin: 0 auto;
+		padding: 1rem;
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		opacity: 0;
+		transition: opacity 0.2s ease-out;
+	}
 }
 
 .active {
-  .slide-content {
-    opacity: 1;
-    transition: opacity 0.4s 1.2s ease-in;
-  }
+
+	.slide-content {
+		opacity: 1;
+		transition: opacity 0.4s 1.2s ease-in;
+	}
 }

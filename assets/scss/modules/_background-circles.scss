@@ -1,42 +1,52 @@
 .bkgrnd-circle {
-  display: block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  width: 100%;
-  position: absolute;
-  @media all and (max-width: 68em) { display: none }
-  
-  &-top-right {
-    height: 80vh;
-    top: -24%;
-    background-position: 135% 0%;
-    @media all and (max-width: 86em) {
-      background-position: 160% 0%;
-    }
-  }
-  &-top-left {
-    height: 100%;
-    top: -33%;
-    background-position: -30% 0%;
-    @media all and (max-width: 86em) {
-      background-position: -40% 0%; 
-    }
-  }
-  &-bottom-right {
-    height: 100%;
-    bottom: -33%;
-    background-position: 100% 0%;
-    @media all and (max-width: 86em) {
-      background-position: 120% 0%; 
-    }
-  }
-  &-bottom-left {
-    height: 100%;
-    bottom: -54%;
-    background-position: -9% 0%;
-    @media all and (max-width: 86em) {
-      background-position: -20% 0%; 
-    }
-  }
+	display: block;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	width: 100%;
+	position: absolute;
+
+	@media all and (max-width: 68em) {
+		display: none
+	}
+
+	&-top-right {
+		height: 80vh;
+		top: -24%;
+		background-position: 135% 0;
+
+		@media all and (max-width: 86em) {
+			background-position: 160% 0%;
+		}
+	}
+
+	&-top-left {
+		height: 100%;
+		top: -33%;
+		background-position: -30% 0%;
+
+		@media all and (max-width: 86em) {
+			background-position: -40% 0;
+		}
+	}
+
+	&-bottom-right {
+		height: 100%;
+		bottom: -33%;
+		background-position: 100% 0;
+
+		@media all and (max-width: 86em) {
+			background-position: 120% 0;
+		}
+	}
+
+	&-bottom-left {
+		height: 100%;
+		bottom: -54%;
+		background-position: -9% 0;
+
+		@media all and (max-width: 86em) {
+			background-position: -20% 0%;
+		}
+	}
 }

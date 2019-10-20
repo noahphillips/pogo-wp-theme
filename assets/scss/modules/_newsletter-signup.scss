@@ -1,35 +1,45 @@
 .newsletter-signup {
-  position: relative;
-  form {
-    width: 100%;
-    display: flex;
-    margin: 0 -.5rem;
-    justify-content: center;
-    & > * { margin: 0 .5rem;}
-    @media all and (min-width: 40em) {
-      max-width: 470px;
-      margin: 0 auto;
-    }
-  }
-  input {
-    border-radius: 10px;
-    padding: 0.4rem 0.6rem;
-  }
-  input[type="text"] {
-    flex-grow: 1;
-    border: 0;
-  }
-  input[type="submit"] {
-    color: $blue;
-    border: 1px solid;
-  }
-  p {
-    width: 100%;
-    max-width: 90vw;
-    margin: 0 auto 2rem;    
-    @media all and (min-width: 40em) {
-      max-width: 470px;
-    }
-  }
+	position: relative;
+
+	form {
+		width: 100%;
+		display: flex;
+		margin: 0 -.5rem;
+		justify-content: center;
+
+		& > * {
+			margin: 0 .5rem;
+		}
+
+		@media all and (min-width: 40em) {
+			max-width: 470px;
+			margin: 0 auto;
+		}
+	}
+
+	input {
+		border-radius: 10px;
+		padding: 0.4rem 0.6rem;
+	}
+
+	input[type="text"] {
+		flex-grow: 1;
+		border: 0;
+	}
+
+	input[type="submit"] {
+		color: $blue;
+		border: 1px solid;
+	}
+
+	p {
+		width: 100%;
+		max-width: 90vw;
+		margin: 0 auto 2rem;
+
+		@media all and (min-width: 40em) {
+			max-width: 470px;
+		}
+	}
 }
 

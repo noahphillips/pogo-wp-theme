@@ -1,0 +1,21 @@
+{#
+/**
+ * Block Name: Leadership Members
+ *
+ * This is the template that displays the Leadership Members.
+ *
+ * @since  1.0.0
+ */
+#}
+
+<div id="{{ block.id }}" class="component leadership">
+
+	{% for item in fields.member %}
+		<div class="leadership-member">
+			<h2>{{ item.post_title }}</h2>
+			<h3>{{ item.position }}</h3>
+			<div>{{ item.post_content }}</div>
+		</div>
+	{% endfor %}
+
+</div>
