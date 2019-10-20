@@ -8,7 +8,7 @@
  * @since   Timber 0.1
  */
 
-define('TEXT_DOMAIN', 'pogo');
+define( 'TEXT_DOMAIN', 'pogo' );
 
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function () {
@@ -32,6 +32,44 @@ Timber::$dirname = array( 'templates', 'views' );
  * No prob! Just set this value to true
  */
 Timber::$autoescape = false;
+
+
+//
+//
+//
+
+/**
+ * Change ACF Gutenberg blocks default block path
+ * This is the callback that displays the blocks.
+ *
+ * @param array  $block The block settings and attributes.
+ * @param string $content The block content (emtpy string).
+ * @param bool   $is_preview True during AJAX preview.
+ */
+function my_acf_block_render_callback( $block, $content = '', $is_preview = false ) {
+	$context = Timber::get_context();
+
+	// convert name ("acf/testimonial") into path friendly slug ("testimonial")
+	$slug = str_replace( 'acf/', '', $block['name'] );
+
+
+	// Store block values.
+	$context['block'] = $block;
+
+	// Store field values.
+	$context['fields'] = get_fields();
+
+	// Store $is_preview value.
+	$context['is_preview'] = $is_preview;
+
+	if ( $slug === 'resources' && get_field( 'type' ) === 'uberflip' ) {
+		$items                      = get_uberflip_items( get_field( 'stream_id' ), get_field( 'limit' ) );
+		$context['fields']['items'] = $items;
+	}
+
+	// Render the block.
+	Timber::render( 'templates/blocks/block-' . $slug . '.twig', $context );
+}
 
 /**
  * Creates a cache busting string for styles and scripts
@@ -87,6 +125,117 @@ add_filter( 'upload_mimes', function ( $mimes ) {
 	return $mimes;
 } );
 
+
+/**
+ * Register Google Analytics Tracking Code
+ *
+ * @return void
+ * @since  1.0.0
+ * @access public
+ */
+function register_ga_tracking_code() {
+	?>
+	<?php if ( get_theme_mod( 'pogo_ga_script' ) ) : ?>
+		<script>
+			(function (i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function () {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o),
+					m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+			ga('create', '<?php echo get_theme_mod( 'pogo_ga_script' ); ?>', 'auto');
+
+			ga('send', 'pageview');
+
+		</script>
+	<?php endif; ?>
+	<?php
+}
+
+
+/**
+ * Register GTM
+ *
+ * @return void
+ * @since  1.0.0
+ * @access public
+ */
+function register_gtm() {
+	?>
+	<?php if ( get_theme_mod( 'pogo_gtm_script' ) ) : ?>
+		<!-- Google Tag Manager -->
+		<script>(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start':
+						new Date().getTime(), event: 'gtm.js'
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', '<?php echo get_theme_mod( 'pogo_gtm_script' ); ?>');
+		</script>
+		<!-- End Google Tag Manager -->
+	<?php endif; ?>
+	<?php
+}
+
+/**
+ * Register Facebook Pixel
+ *
+ * @return void
+ * @since  1.0.0
+ * @access public
+ */
+function register_facebook_pixel() {
+	?>
+	<?php if ( get_theme_mod( 'pogo_fbp_script' ) ) : ?>
+		<!-- Facebook Pixel Code -->
+		<script>
+			!function (f, b, e, v, n, t, s) {
+				if(f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod ?
+						n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+				};
+				if(!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = '2.0';
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s)
+			}(window, document, 'script',
+				'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>');
+			fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+					   src="https://www.facebook.com/tr?id=<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>"
+					   &ev=PageView&noscript=1"
+			/></noscript>
+		<!-- End Facebook Pixel Code -->
+	<?php endif; ?>
+	<?php
+}
+
+//
+//
+//
+
+
 /**
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
@@ -98,10 +247,15 @@ class StarterSite extends Timber\Site {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_filter( 'body_class', array( $this, 'custom_body_classes' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
+		add_action( 'widgets_init', array( $this, 'register_widgetized_areas' ) );
 		add_action( 'customize_register', array( $this, 'register_customizer_options' ) );
+		add_action( 'acf/init', array( $this, 'register_gutenberg_blocks' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'wp_head', array( $this, 'register_gtm' ) );
+		add_action( 'wp_head', array( $this, 'register_facebook_pixel' ) );
+		add_action( 'wp_head', array( $this, 'register_ga_tracking_code' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_and_styles' ) );
 		parent::__construct();
 	}
@@ -186,9 +340,54 @@ class StarterSite extends Timber\Site {
 		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css', false, '1.0.0', 'all' );
 		wp_enqueue_style( 'custom', get_stylesheet_directory_uri() . '/css/custom.css', false, '1.0.0', 'all' );
 
-		if(is_front_page()) {
+		wp_enqueue_script( 'events' );
+		if ( is_front_page() ) {
 //			wp_enqueue_script('scriptjs');
-			wp_enqueue_script('events');
+		}
+
+	}
+
+	/**
+	 * Register sidebars.
+	 *
+	 * @link   https://developer.wordpress.org/reference/functions/register_sidebar/
+	 * @link   https://developer.wordpress.org/reference/functions/register_sidebars/
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	function register_widgetized_areas() {
+
+		$args = [
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget__title">',
+			'after_title'   => '</h3>'
+		];
+
+
+		$my_sidebars = array(
+			array(
+				'name'        => 'Footer Main Widget Area',
+				'id'          => 'footer_main_widget_area',
+				'description' => 'Widgets shown in the footer',
+			),
+		);
+
+		$defaults = array(
+			'name'          => 'Awesome Sidebar',
+			'id'            => 'awesome-sidebar',
+			'description'   => 'This Sidebar is shown as the default of the theme',
+			'class'         => '',
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget__title">',
+			'after_title'   => '</h3>'
+		);
+
+		foreach ( $my_sidebars as $sidebar ) {
+			$args = wp_parse_args( $sidebar, $defaults );
+			register_sidebar( $args );
 		}
 
 	}
@@ -197,10 +396,120 @@ class StarterSite extends Timber\Site {
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
 
+		# Register custom post type Client Logo
+		/**
+		 * Registers post types needed by the theme.
+		 *
+		 * @return void
+		 * @since  1.1.0
+		 * @access public
+		 */
+		$brand_labels = array(
+			'name'                  => _x( 'Leadership', 'Post Type General Name', TEXT_DOMAIN ),
+			'singular_name'         => _x( 'Leadership', 'Post Type Singular Name', TEXT_DOMAIN ),
+			'menu_name'             => __( 'Leadership', TEXT_DOMAIN ),
+			'name_admin_bar'        => __( 'Leadership', TEXT_DOMAIN ),
+			'archives'              => __( 'Leadership Archives', TEXT_DOMAIN ),
+			'attributes'            => __( 'Leadership Attributes', TEXT_DOMAIN ),
+			'parent_item_colon'     => __( 'Parent Leadership:', TEXT_DOMAIN ),
+			'all_items'             => __( 'All members', TEXT_DOMAIN ),
+			'add_new_item'          => __( 'Add New member', TEXT_DOMAIN ),
+			'add_new'               => __( 'Add New', TEXT_DOMAIN ),
+			'new_item'              => __( 'New Leadership member', TEXT_DOMAIN ),
+			'edit_item'             => __( 'Edit Leadership member', TEXT_DOMAIN ),
+			'update_item'           => __( 'Update Leadership member', TEXT_DOMAIN ),
+			'view_item'             => __( 'View Leadership member', TEXT_DOMAIN ),
+			'view_items'            => __( 'View Leadership members', TEXT_DOMAIN ),
+			'search_items'          => __( 'Search Leadership member', TEXT_DOMAIN ),
+			'not_found'             => __( 'Not found', TEXT_DOMAIN ),
+			'not_found_in_trash'    => __( 'Not found in Trash', TEXT_DOMAIN ),
+			'featured_image'        => __( 'Featured Image', TEXT_DOMAIN ),
+			'set_featured_image'    => __( 'Set featured image', TEXT_DOMAIN ),
+			'remove_featured_image' => __( 'Remove featured image', TEXT_DOMAIN ),
+			'use_featured_image'    => __( 'Use as featured image', TEXT_DOMAIN ),
+			'insert_into_item'      => __( 'Insert into Leadership', TEXT_DOMAIN ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Leadership', TEXT_DOMAIN ),
+			'items_list'            => __( 'Leadership members list', TEXT_DOMAIN ),
+			'items_list_navigation' => __( 'Leadership members list navigation', TEXT_DOMAIN ),
+			'filter_items_list'     => __( 'Filter Leadership members list', TEXT_DOMAIN ),
+		);
+		$brand_args   = array(
+			'label'               => __( 'Leadership Member', TEXT_DOMAIN ),
+			'description'         => __( 'Leadership Member', TEXT_DOMAIN ),
+			'labels'              => $brand_labels,
+			'supports'            => array( 'title', 'editor', 'thumbnail' ),
+			'menu_icon'           => 'dashicons-groups',
+			'taxonomies'          => array(),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 10,
+			'show_in_admin_bar'   => true,
+			'show_in_nav_menus'   => true,
+			'show_in_rest'        => true,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+		);
+		register_post_type( 'leadership', $brand_args );
+
 	}
 
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
+
+	}
+
+	/**
+	 * Registers ACF Gutenberg Blocks
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 * @access public
+	 */
+	public function register_gutenberg_blocks() {
+
+		// check function exists otherwise return
+		if ( ! function_exists( 'acf_register_block' ) ) {
+			return;
+		}
+
+		/**
+		 * Registers Leadership Members ACF Gutenberg block
+		 *
+		 * @return void
+		 * @since  1.0.0
+		 * @access public
+		 */
+		acf_register_block( array(
+			'name'            => 'leadership-members',
+			'title'           => __( 'Leadership Members' ),
+			'description'     => __( 'a custom Gutenberg Block to display Leadership members.' ),
+			'render_callback' => 'my_acf_block_render_callback',
+			'category'        => 'formatting',
+			'icon'            => 'admin-comments',
+			'keywords'        => array( 'member', 'members', 'leadership' ),
+		) );
+
+		/**
+		 * Registers Small List ACF Gutenberg block
+		 *
+		 * @return void
+		 * @since  1.0.0
+		 * @access public
+		 */
+		acf_register_block( array(
+			'name'            => 'small-list',
+			'title'           => __( 'Small List' ),
+			'description'     => __( 'a custom Gutenberg Block to displays a small icon list.' ),
+			'render_callback' => 'my_acf_block_render_callback',
+			'category'        => 'formatting',
+			'icon'            => 'admin-comments',
+			'keywords'        => array( 'list', 'lists', 'small' ),
+		) );
 
 	}
 
@@ -264,7 +573,6 @@ class StarterSite extends Timber\Site {
 		) ) );
 
 
-
 		/**
 		 * Footer Copyright setting example.
 		 *
@@ -302,10 +610,10 @@ class StarterSite extends Timber\Site {
 			'pogo_footer_copyrights',
 			// $args
 			array(
-				'settings'    => 'pogo_footer_copyrights',
-				'section'     => 'title_tagline',
-				'type'        => 'text',
-				'label'       => __( 'Footer Copyrights ', TEXT_DOMAIN ),
+				'settings' => 'pogo_footer_copyrights',
+				'section'  => 'title_tagline',
+				'type'     => 'text',
+				'label'    => __( 'Footer Copyrights ', TEXT_DOMAIN ),
 			)
 		);
 
@@ -522,7 +830,6 @@ class StarterSite extends Timber\Site {
 	}
 
 
-
 	/** This is where you add some context
 	 *
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
@@ -531,8 +838,8 @@ class StarterSite extends Timber\Site {
 //		$context['foo']   = 'bar';
 //		$context['stuff'] = 'I am a value set in your functions.php file';
 //		$context['notes'] = 'These values are available everytime you call Timber::context();';
-		$context['menu']  = new Timber\Menu();
-		$context['site']  = $this;
+		$context['menu'] = new Timber\Menu();
+		$context['site'] = $this;
 
 		return $context;
 	}
@@ -613,3 +920,4 @@ class StarterSite extends Timber\Site {
 }
 
 new StarterSite();
+
