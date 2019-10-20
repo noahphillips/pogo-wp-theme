@@ -1,21 +1,25 @@
 {#
 /**
- * Block Name: Leadership Members
+ * Block Name: Small List
  *
- * This is the template that displays the Leadership Members.
+ * This is the template that displays a small formatted list of items
+ * with the ability to add a title to the list item.
  *
  * @since  1.0.0
  */
 #}
 
-<div id="{{ block.id }}" class="component leadership">
+<div id="{{ block.id }}" class="component small-list">
 
-	{% for item in fields.member %}
-		<div class="leadership-member">
-			<h2>{{ item.post_title }}</h2>
-			<h3>{{ item.position }}</h3>
-			<div>{{ item.post_content }}</div>
-		</div>
-	{% endfor %}
+	<h2 class="title title-3 has-top-marg-xlrg has-top-pad-xlrg">{{ fields.title }}</h2>
+
+
+	{% if(fields.items) %}
+		<ul class="has-bullets has-bottom-marg-xlrg">
+			{% for item in fields.items %}
+				<li>{{ item.text }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
 
 </div>
