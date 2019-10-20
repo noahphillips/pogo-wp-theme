@@ -118,12 +118,48 @@ function pogo_get_social_sites() {
  * @access public
  * @return void
  */
-add_filter( 'upload_mimes', function ( $mimes ) {
-	$mimes['svg']  = 'image/svg+xml';
-	$mimes['svgz'] = 'image/svg+xml';
 
-	return $mimes;
-} );
+
+/**
+ * Render Contact Details
+ *
+ * @return void
+ * @since  1.0.0
+ * @access public
+ */
+function render_contact_details() {
+	$company_name    = get_theme_mod( 'company_name' ) ?: get_theme_mod( 'company_name' );
+	$company_address = get_theme_mod( 'company_address' ) ?: get_theme_mod( 'company_address' );
+	$company_state   = get_theme_mod( 'company_state' ) ?: get_theme_mod( 'company_state' );
+	$company_phone   = get_theme_mod( 'company_phone' ) ?: get_theme_mod( 'company_phone' );
+	$company_email   = get_theme_mod( 'company_email' ) ?: get_theme_mod( 'company_email' );
+	$company_map     = get_theme_mod( 'company_map' ) ?: get_theme_mod( 'company_email' );
+	?>
+	<address class="font-body">
+		<?php if ( $company_name ) { ?>
+			<?php echo $company_name; ?><br>
+		<?php } ?>
+		<?php if ( $company_address ) { ?>
+			<?php echo $company_address; ?><br>
+		<?php } ?>
+		<?php if ( $company_state ) { ?>
+			<?php echo $company_state; ?><br>
+		<?php } ?>
+		<?php if ( $company_name ) { ?>
+			<a href="tel:<?php echo $company_phone; ?>">Phone: <?php echo $company_phone; ?></a><br>
+		<?php } ?>
+		<?php if ( $company_email ) { ?>
+			<a href="mailto:<?php echo $company_email; ?>"><?php echo $company_email; ?></a>
+		<?php } ?>
+	</address>
+	<?php if ( $company_map ) { ?>
+		<section data-map="google">
+			<?php echo $company_map; ?>
+		</section>
+	<?php } ?>
+
+	<?php
+}
 
 
 /**
@@ -512,6 +548,23 @@ class StarterSite extends Timber\Site {
 			'keywords'        => array( 'list', 'lists', 'small' ),
 		) );
 
+		/**
+		 * Registers Contact Details ACF Gutenberg block
+		 *
+		 * @return void
+		 * @since  1.0.0
+		 * @access public
+		 */
+		acf_register_block( array(
+			'name'            => 'contact-details',
+			'title'           => __( 'Contact Details' ),
+			'description'     => __( 'a custom Gutenberg Block to display company contact details.' ),
+			'render_callback' => 'my_acf_block_render_callback',
+			'category'        => 'formatting',
+			'icon'            => 'admin-comments',
+			'keywords'        => array( 'list', 'lists', 'small' ),
+		) );
+
 	}
 
 
@@ -776,8 +829,257 @@ class StarterSite extends Timber\Site {
 		 *
 		 * @link: https://www.competethemes.com/social-icons-wordpress-menu-theme-customizer/
 		 */
+		$wp_customize->add_section( 'contact_details', array(
+			'title'    => __( 'Contact Details', TEXT_DOMAIN ),
+			'priority' => 110,
+		) );
+
+		/**
+		 * Company Name setting example.
+		 *
+		 * - Setting: Company Name
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Company Name for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'company_name',
+			// $args
+			array(
+				'default' => 'Intuity Medical, Inc.',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Company Name
+		 *
+		 * Register the core "text" control to be used to configure the Company Name Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'company_name',
+			// $args
+			array(
+				'settings' => 'company_name',
+				'section'  => 'contact_details',
+				'type'     => 'text',
+				'label'    => __( 'Company Name ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Address setting example.
+		 *
+		 * - Setting: Address
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Address for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'company_address',
+			// $args
+			array(
+				'default' => 'Fermonth iuhrgiuhriu 65',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Address
+		 *
+		 * Register the core "text" control to be used to configure the Address Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'company_address',
+			// $args
+			array(
+				'settings' => 'company_address',
+				'section'  => 'contact_details',
+				'type'     => 'text',
+				'label'    => __( 'Address ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * State setting example.
+		 *
+		 * - Setting: State
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined State for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'company_state',
+			// $args
+			array(
+				'default' => 'Fremont, CA 94538',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: State
+		 *
+		 * Register the core "text" control to be used to configure the State Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'company_state',
+			// $args
+			array(
+				'settings' => 'company_state',
+				'section'  => 'contact_details',
+				'type'     => 'text',
+				'label'    => __( 'State ', TEXT_DOMAIN ),
+			)
+		);
+
+		/**
+		 * Phone Number setting example.
+		 *
+		 * - Setting: Phone Number
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Phone Number for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'company_phone',
+			// $args
+			array(
+				'default' => '510.946.8800',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Phone Number
+		 *
+		 * Register the core "text" control to be used to configure the Phone Number Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'company_phone',
+			// $args
+			array(
+				'settings' => 'company_phone',
+				'section'  => 'contact_details',
+				'type'     => 'text',
+				'label'    => __( 'Phone Number ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Email Address setting example.
+		 *
+		 * - Setting: Email Address
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Email Address for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'company_email',
+			// $args
+			array(
+				'default' => 'info@intuitymedical.com
+',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Email Address
+		 *
+		 * Register the core "text" control to be used to configure the Email Address Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'company_email',
+			// $args
+			array(
+				'settings' => 'company_email',
+				'section'  => 'contact_details',
+				'type'     => 'text',
+				'label'    => __( 'Email Address ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		$wp_customize->add_setting( 'company_map', array(
+			'capability' => 'edit_theme_options',
+			'default'    => '',
+//			'sanitize_callback' => 'sanitize_textarea_field',
+		) );
+
+		$wp_customize->add_control( 'company_map', array(
+			'type'        => 'textarea',
+			'section'     => 'contact_details', // // Add a default or your own section
+			'label'       => __( 'Map' ),
+			'description' => __( 'Add your map as an iframe through Google Maps' ),
+		) );
+
+
+		/**
+		 * Social site icons for Quick Menu bar
+		 *
+		 * @link: https://www.competethemes.com/social-icons-wordpress-menu-theme-customizer/
+		 */
 		$wp_customize->add_section( 'social_settings', array(
-			'title'    => __( 'Social Media Icons', 'aow' ),
+			'title'    => __( 'Social Media Icons', TEXT_DOMAIN ),
 			'priority' => 120,
 		) );
 

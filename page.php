@@ -21,10 +21,10 @@
  * @since    Timber 0.1
  */
 
-$site_logo         = get_theme_mod( 'site_logo' );
-$footer_logo       = get_theme_mod( 'footer_logo' );
-$footer_copyrights = get_theme_mod( 'pogo_footer_copyrights' );
-$gtm_script_tag    = get_theme_mod( 'pogo_gtm_script' );
+$site_logo          = get_theme_mod( 'site_logo' );
+$footer_logo        = get_theme_mod( 'footer_logo' );
+$footer_copyrights  = get_theme_mod( 'pogo_footer_copyrights' );
+$gtm_script_tag     = get_theme_mod( 'pogo_gtm_script' );
 $show_footer_social = get_theme_mod( 'show_footer_social' ); // Show footer social checkbox
 $social_sites       = pogo_get_social_sites(); // Get all social sites as an array
 
@@ -36,9 +36,12 @@ foreach ( $social_sites as $key => $social_site ) {
 	}
 }
 
-$context = Timber::context();
-$timber_post = new Timber\Post();
-$context['post'] = $timber_post;
+$context                            = Timber::context();
+$timber_post                        = new Timber\Post();
+$context['post']                    = $timber_post;
+$context['disclaimer']              = get_field( 'page_disclaimer' );
+$context['company_name']            = get_theme_mod( 'company_name' );
+$context['company_address']         = get_theme_mod( 'company_address' );
 $context['site_logo']               = $site_logo;
 $context['footer_logo']             = $footer_logo;
 $context['show_footer_social']      = $show_footer_social;
