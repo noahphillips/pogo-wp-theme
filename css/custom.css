@@ -394,6 +394,8 @@ object { display: block; }
 
 .footer-links { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: .3rem; justify-items: start; padding-bottom: 2rem; }
 
+.footer-links li { padding: .3rem 0; }
+
 .footer-links a { color: white; position: relative; }
 
 .footer-links a:before { content: ""; position: absolute; width: 100%; height: 1px; bottom: -2px; left: 0; background-color: white; visibility: hidden; -webkit-transform: scaleX(0); transform: scaleX(0); -webkit-transition: all 0.3s ease-in-out 0s; transition: all 0.3s ease-in-out 0s; }
@@ -401,10 +403,6 @@ object { display: block; }
 .footer-links a:hover { color: white; }
 
 .footer-links a:hover:before { visibility: visible; -webkit-transform: scaleX(1); transform: scaleX(1); }
-
-.footer-link ul { padding-top: .3rem; }
-
-.footer-link ul li { padding: .3rem 0; }
 
 /*! fullPage 3.0.4 https://github.com/alvarotrigo/fullPage.js @license GPLv3 for open source use only or Fullpage Commercial License for commercial use http://alvarotrigo.com/fullPage/pricing/ Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo */
 html.fp-enabled, .fp-enabled body { margin: 0; padding: 0; overflow: hidden; /*Avoid flicker on slides transitions for mobile phones #336 */ -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }

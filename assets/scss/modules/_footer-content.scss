@@ -32,6 +32,11 @@
 		justify-items: start;
 		padding-bottom: 2rem;
 
+
+		li {
+			padding: .3rem 0;
+		}
+
 		// Hover underline animation
 		a {
 			color: white;
@@ -57,16 +62,6 @@
 					visibility: visible;
 					transform: scaleX(1);
 				}
-			}
-		}
-	}
-
-	&-link {
-		ul {
-			padding-top: .3rem;
-
-			li {
-				padding: .3rem 0;
 			}
 		}
 	}
