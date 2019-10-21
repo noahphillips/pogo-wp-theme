@@ -30,6 +30,9 @@ foreach ( $social_sites as $key => $social_site ) {
 
 $context                            = Timber::context();
 $context['posts']                   = new Timber\PostQuery();
+$context['disclaimer']              = get_field( 'page_disclaimer' );
+$context['page_decoration']         = get_field( 'page_decoration' );
+$context['decoration_position']     = get_field( 'decoration_position' );
 $context['site_logo']               = $site_logo;
 $context['footer_logo']             = $footer_logo;
 $context['show_footer_social']      = $show_footer_social;

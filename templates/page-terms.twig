@@ -9,8 +9,8 @@
 		</section>
 
 		<main class="site-content">
-			{% if(true) %}
-				<img class="heading-icon" src="{{ site.theme.link }}/static/images/rings.svg">
+			{% if(page_decoration) %}
+				<img src="{{ page_decoration }}" alt="" class="heading-icon {{ decoration_position }}">
 			{% endif %}
 
 			<div class="content is-grey">

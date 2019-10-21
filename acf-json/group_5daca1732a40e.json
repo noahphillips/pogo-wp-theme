@@ -3,6 +3,74 @@
     "title": "Page - Options",
     "fields": [
         {
+            "key": "field_5dacf296f840c",
+            "label": "Page background",
+            "name": "page_background",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Light Gray",
+            "ui_off_text": "White"
+        },
+        {
+            "key": "field_5dacf279f840b",
+            "label": "Page decoration",
+            "name": "page_decoration",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5dacf4716c705",
+            "label": "Decoration position",
+            "name": "decoration_position",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_5daca17af1cc5",
             "label": "Page disclaimer",
             "name": "page_disclaimer",
@@ -39,5 +107,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1571594634
+    "modified": 1571615891
 }
