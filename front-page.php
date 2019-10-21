@@ -13,6 +13,8 @@
  * @since   Timber 0.1
  */
 
+global $post;
+
 $site_logo          = get_theme_mod( 'site_logo' );
 $footer_logo        = get_theme_mod( 'footer_logo' );
 $footer_copyrights  = get_theme_mod( 'pogo_footer_copyrights' );
@@ -27,11 +29,11 @@ foreach ( $social_sites as $key => $social_site ) {
 		$social_networks[ $key ]['url']  = get_theme_mod( $social_site );
 	}
 }
-
 $context                            = Timber::context();
-$context['posts']                   = new Timber\PostQuery();
-$context['sections']                = get_field( 'sections' );
-$context['disclaimer']              = get_field( 'page_disclaimer' );
+$timber_post                        = new Timber\Post();
+$context['post']                    = $timber_post;
+$context['sections']                = get_field( 'section', $post->ID );
+$context['disclaimer']              = get_field( 'page_disclaimer', $post->ID );
 $context['site_logo']               = $site_logo;
 $context['footer_logo']             = $footer_logo;
 $context['show_footer_social']      = $show_footer_social;
@@ -41,7 +43,13 @@ $context['footer_main_widget_area'] = Timber::get_widgets( 'footer_main_widget_a
 $templates                          = array( 'index.twig' );
 
 if ( is_home() ) {
-	array_unshift( $templates, 'front-page.twig', 'home.twig' );
+//	array_unshift( $templates, 'front-page.twig', 'home.twig' );
 }
+
+
+//var_dump($post->ID);
+//var_dump($timber_post);
+//var_dump($context);
+//print_r($templates);
 
 Timber::render( $templates, $context );

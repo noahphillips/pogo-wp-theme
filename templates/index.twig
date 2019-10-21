@@ -2,119 +2,65 @@
 
 {% block content %}
 
-	<img src="../img/home-ring2.svg" alt="" class="heading-icon {{ post.meta('decoration_position')}}">
+	<img src="{{ post.meta('page_decoration') }}" alt="" class="heading-icon {{ post.meta('decoration_position') }}">
 
-	<h1>
-		{{ post.meta('disclaimer') }}
-	</h1>
 
-	<div class="videos">
-		<video src="{{ theme.link }}/static/videos/forward1.mp4" muted preload id="f0" class="active"></video>
-		<video src="{{ theme.link }}/static/videos/forward2.mp4" muted preload id="f1"></video>
-		<video src="{{ theme.link }}/static/videos/forward3.mp4" muted preload id="f2"></video>
-		<video src="{{ theme.link }}/static/videos/reverse0.mp4" muted preload id="r1"></video>
-		<video src="{{ theme.link }}/static/videos/reverse2.mp4" muted preload id="r2"></video>
-		<video src="{{ theme.link }}/static/videos/reverse3.mp4" muted preload id="r3"></video>
-	</div>
+	{% if(post.meta('videos') or post.meta('reverse_videos')) %}
+		<div class="videos">
+			{% for item in post.meta('videos') %}
+				<video src="{{ item.video }}" muted preload id="f{{ loop.index }}" class="{{ loop.index == 1 ? 'active' : '' }}"></video>
+			{% endfor %}
+			{% for item in post.meta('reverse_videos') %}
+				<video src="{{ item.video }}" muted preload id="r{{ loop.index }}"></video>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+{#	<video src="{{ theme.link }}/static/videos/forward2.mp4" muted preload id="f1"></video>#}
+{#	<video src="{{ theme.link }}/static/videos/forward3.mp4" muted preload id="f2"></video>#}
+{#	<video src="{{ theme.link }}/static/videos/reverse2.mp4" muted preload id="r2"></video>#}
+{#	<video src="{{ theme.link }}/static/videos/reverse3.mp4" muted preload id="r3"></video>#}
+
 
 	<div id="fullpage">
 
-		{% if(sections) %}
-
-				{% for item in sections %}
-					<section id="section-{{ loop.index }}" class="section active">
-						<div class="slide-content ">
-							<h2 class="is-blue title title-3">{{ item.title }}</h2>
-							<h3 class="is-grey title title-2">{{ item.subtitle }}</h3>
-							<p class="is-grey font-body">
-								{{ item.content }}
-							</p>
-						</div>
-					</section>
-				{% endfor %}
-
+		{% if(post.meta('section')) %}
+			{% for item in post.meta('section') %}
+				<section id="section-{{ loop.index }}" class="section active">
+					<div class="slide-content ">
+						<h2 class="is-blue title title-3">{{ item.title }}</h2>
+						<h3 class="is-grey title title-2">{{ item.subtitle }}</h3>
+						<p class="is-grey font-body">
+							{{ item.content }}
+						</p>
+					</div>
+				</section>
+			{% endfor %}
 		{% endif %}
 
-		<section id="section-1" class="section active">
-			<div class="slide-content ">
-				<h2 class="is-blue title title-3">Introducing POGO Automatic&reg;</h2>
-				<h3 class="is-grey title title-2">Blood testing, simplified.</h3>
-				<p class="is-grey font-body">
-					The POGO Automatic meter is a new way to test glucose. It’s
-					simple, discreet, and won’t get in the way of your life. Just load
-					the 10-test cartridge and press your finger on the blue button.
-					The meter does the rest. Press. Test. GO. It’s that simple.
-				</p>
-			</div>
-		</section>
-
-		<section id="section-2" class="section active">
-			<div class="slide-content ">
-				<h2 class="is-blue title title-3">Testing with POGO Automatic&reg;</h2>
-				<h3 class="is-grey title title-2">
-					Test your glucose on your own terms.
-				</h3>
-				<p class="is-grey font-body">
-					Just press your finger on the blue button for automatic lancing
-					and blood collection. Making it easy to test anywhere, any time.
-					Never handle another test strip or lancet again.
-				</p>
-			</div>
-		</section>
-
-		<section id="section-3" class="section active">
-			<div class="slide-content ">
-				<h2 class="is-blue title title-3">Results with the POGO Automatic&reg;</h2>
-				<h3 class="is-grey title title-2">
-					Fast results in just one step.
-				</h3>
-				<p class="is-grey font-body">
-					With most glucose meters, every test takes away precious minutes
-					from your life. With POGO Automatic, you get your result in 4
-					seconds without skipping a beat in your daily routine.
-				</p>
-			</div>
-		</section>
-
-		<section id="section-4" class="section last-section">
-			<div class="slide-content ">
-				<h2 class="is-blue title title-3">The POGO Automatic&reg; Cartridge</h2>
-				<h3 class="is-grey title title-2">
-					10 complete tests in one tiny package.
-				</h3>
-				<p class="is-grey font-body">
-					The POGO Automatic System combines lancing and blood collection in
-					a single 10-test cartridge. No more loading individual lancets and
-					test strips—or handling and disposing of supplies. Just insert a
-					POGO test cartridge and with each test, you get a fresh lancet.
-				</p>
-			</div>
-		</section>
 
 	</div>
 
-	<div class="dots">
-		<div class="dot active"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-		<div class="dot"></div>
-	</div>
+	{% if(post.meta('section')) %}
+		<div class="dots">
+			{% for item in sections %}
+				<div class="dot {{ loop.index == 1 ? 'active' : '' }}"></div>
+			{% endfor %}
+		</div>
+	{% endif %}
 
 	<main class="main-info">
 		<section class="main-info-img-wrap">
 			<img class="mask mask-top" src="{{ theme.link }}/static/images/clipping-mask-top.png" alt="">
-			<img class="main-info-img" src="{{ theme.link }}/static/images/homepage-phone-bg.png" alt="">
+			<img class="main-info-img" src="{{ post.meta('bottom_section_image') }}" alt="">
 			<img class="mask mask-bottom" src="{{ theme.link }}/static/images/clipping-mask-bottom.png" alt="">
 			<article class="content">
 				<div class="main-info-copy">
-					<h2 class="title title-3">POGO Automatic&reg; + Patterns&reg;</h2>
-					<h3 class="title title-2"> Together, they make managing your health easier.</h3>
-					<p>
-						The Patterns app syncs your POGO Automatic data, so you can easily track your glucose results on your iOS or Android-based phone or desktop PC.
-					</p>
-					<p>
-						Our lifestyle health coaching program pairs you with a professional certified diabetes educator to help you develop a healthy lifestyle plan and the one-on-one direct care you need to make important lifestyle changes.
-					</p>
+					<h2 class="title title-3">{{ post.meta('bottom_section_title') }}</h2>
+					<h3 class="title title-2">{{ post.meta('bottom_section_subtitle') }}</h3>
+					<div>
+						{{ post.meta('bottom_section_content') }}
+					</div>
 				</div>
 			</article>
 		</section>
