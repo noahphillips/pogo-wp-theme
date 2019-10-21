@@ -16,11 +16,6 @@
 		</div>
 	{% endif %}
 
-{#	<video src="{{ theme.link }}/static/videos/forward2.mp4" muted preload id="f1"></video>#}
-{#	<video src="{{ theme.link }}/static/videos/forward3.mp4" muted preload id="f2"></video>#}
-{#	<video src="{{ theme.link }}/static/videos/reverse2.mp4" muted preload id="r2"></video>#}
-{#	<video src="{{ theme.link }}/static/videos/reverse3.mp4" muted preload id="r3"></video>#}
-
 
 	<div id="fullpage">
 
@@ -65,6 +60,16 @@
 			</article>
 		</section>
 	</main>
+
+	{% set form_shortcode = '[gravityform id=' ~ post.meta('form_id') ~ ' title=false description=false ajax=true]' %}
+
+	<section class="section-newsletter">
+		<div class="newsletter-signup">
+			<h3 class="newsletter-signup__title title title-2">{{ post.meta('newsletter_title') }}</h3>
+			<div class="newsletter-signup__content">{{ post.meta('newsletter_content') }}</div>
+			{{ function('do_shortcode', form_shortcode) }}
+		</div>
+	</section>
 
 	{% if(disclaimer) %}
 		<p style="width:100%;text-align:center;font-size:.8rem;">{{ disclaimer }}</p>

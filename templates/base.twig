@@ -17,13 +17,20 @@
 
 <body class="{{ body_class }}" data-template="base.twig">
 {# <a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a> #}
-<div id="pogo-body-container">
+<div id="pogo-body-container" class="{{ post.meta('page_background') ? 'bg-light' : '' }}">
 	<header id="header" class="main-background">
 		{% block header %}
 			<div class="header-content">
 				<a href="/" class="header-logo"> <img src="{{ site_logo_url }}" alt="" class="logo"/> </a>
 				<div class="header-controls">
-					<button class="header-button" data-modal="sign-in">Sign In</button>
+					<a class="header-link-item" href="{{ site.url }}">
+						<img class="header-link-item__icon" src="{{ theme.link }}/static/images/icon-home.png" alt="">
+						<span class="header-link-item__text">{{ _e('Home', TEXT_DOMAIN) }}</span>
+					</a>
+					<a class="header-link-item" data-modal="sign-in">
+						<img class="header-link-item__icon" src="{{ theme.link }}/static/images/icon-user.png" alt="">
+						<span class="header-link-item__text">{{ _e('Sign In', TEXT_DOMAIN) }}</span>
+					</a>
 					{% include "menu.twig" with {'menu': menu.get_items} %}
 				</div>
 			</div>

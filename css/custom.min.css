@@ -37,6 +37,9 @@ object{display:block}
 .content{width:100%;max-width:940px;-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;margin:0 auto;padding:2.5rem 1rem;position:relative}
 #body-container{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;max-width:1920px;margin:0 auto;position:relative;width:100vw}
 #header{position:fixed;z-index:10;width:100%;right:0;left:0}
+.header-link-item{color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-right:2.5rem}
+.header-link-item:last-of-type{margin-right:3rem}
+.header-link-item__icon{height:46px;width:46px;margin-right:1rem}
 #footer{-ms-flex-negative:0;flex-shrink:0;padding:2rem 0;position:relative;z-index:2}
 .footer-socials__icon{-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#fff;border:2px solid #fff;border-radius:100%;display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;font-size:1.4rem;height:44px;width:44px;margin-right:1rem}
 .footer-socials__icon:last-of-type{margin-right:0}
@@ -118,13 +121,15 @@ object{display:block}
 .videos::after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:-webkit-gradient(linear,left top,left bottom,color-stop(75%,rgba(245,245,245,0)),color-stop(95%,#f5f5f5)),-webkit-gradient(linear,left top,right top,from(#f5f5f5),color-stop(10%,rgba(245,245,245,0)),color-stop(90%,rgba(245,245,245,0)),to(#f5f5f5));background:linear-gradient(rgba(245,245,245,0) 75%,#f5f5f5 95%),linear-gradient(to right,#f5f5f5,rgba(245,245,245,0) 10%,rgba(245,245,245,0) 90%,#f5f5f5);z-index:3}
 .slide-content{height:100%;max-width:750px;margin:0 auto;padding:1rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;opacity:0;-webkit-transition:opacity .2s ease-out;transition:opacity .2s ease-out}
 .active .slide-content{opacity:1;-webkit-transition:opacity .4s 1.2s ease-in;transition:opacity .4s 1.2s ease-in}
-.newsletter-signup{position:relative}
+.newsletter-signup{position:relative;max-width:460px;text-align:center;margin-left:auto;margin-right:auto;padding:3rem 0}
 .newsletter-signup form{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 -.5rem;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .newsletter-signup form>*{margin:0 .5rem}
 .newsletter-signup input{border-radius:10px;padding:.4rem .6rem}
 .newsletter-signup input[type="text"]{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;border:0}
 .newsletter-signup input[type="submit"]{color:#25a9e0;border:1px solid}
-.newsletter-signup p{width:100%;max-width:90vw;margin:0 auto 2rem}
+.newsletter-signup p{width:100%;max-width:90vw;margin:0}
+.newsletter-signup p+p{margin-bottom:2rem}
+.newsletter-signup .gfield_required{display:none}
 .circles{display:block;height:300px;-o-object-fit:contain;object-fit:contain;width:auto;position:absolute;top:0;right:0}
 .bkgrnd-circle{display:block;background-size:contain;background-repeat:no-repeat;background-color:transparent;width:100%;position:absolute}
 .bkgrnd-circle-top-right{height:80vh;top:-24%;background-position:135% 0}
@@ -216,7 +221,7 @@ object{display:block}
 .fp-sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media all and (min-width:40em){html{font-size:16px}
 .newsletter-signup form{max-width:470px;margin:0 auto}
-.newsletter-signup p{max-width:470px}
+.newsletter-signup p{max-width:480px}
 }@media all and (min-width:75em){.site-content{padding-top:5.7rem;padding-bottom:10rem}
 .heading-icon{width:15rem}
 }@media all and (min-width:75rem){.content{padding:7rem 0}
@@ -225,6 +230,7 @@ object{display:block}
 }@media all and (min-width:800px){.dots{left:6rem}
 }@media(min-width:900px){.is-laptop-white{color:#fff}
 .is-laptop-grey{color:#3b3b3c}
+}@media(min-width:1024px){.newsletter-signup{padding:6rem 0}
 }@media all and (min-width:1100px){.heading-icon{display:block}
 }@media all and (min-width:1200px){.videos{top:40px;height:calc(100vh - 120px);width:calc((100vh - 120px) * (15 / 13.1))}
 }@media(max-width:899px){.is-tablet-hidden{display:none}

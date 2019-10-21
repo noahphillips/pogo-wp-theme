@@ -88,6 +88,12 @@ object { display: block; }
 
 #header { position: fixed; z-index: 10; width: 100%; right: 0; left: 0; }
 
+.header-link-item { color: #ffffff; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-right: 2.5rem; }
+
+.header-link-item:last-of-type { margin-right: 3rem; }
+
+.header-link-item__icon { height: 46px; width: 46px; margin-right: 1rem; }
+
 #footer { -ms-flex-negative: 0; flex-shrink: 0; padding: 2rem 0; position: relative; z-index: 2; }
 
 .footer-socials__icon { -webkit-box-align: center; -ms-flex-align: center; align-items: center; color: #ffffff; border: 2px solid #ffffff; border-radius: 100%; display: -webkit-inline-box; display: -ms-inline-flexbox; display: inline-flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; font-size: 1.4rem; height: 44px; width: 44px; margin-right: 1rem; }
@@ -264,7 +270,9 @@ object { display: block; }
 
 .active .slide-content { opacity: 1; -webkit-transition: opacity 0.4s 1.2s ease-in; transition: opacity 0.4s 1.2s ease-in; }
 
-.newsletter-signup { position: relative; }
+.newsletter-signup { position: relative; max-width: 460px; text-align: center; margin-left: auto; margin-right: auto; padding: 3rem 0; }
+
+@media (min-width: 1024px) { .newsletter-signup { padding: 6rem 0; } }
 
 .newsletter-signup form { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0 -.5rem; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
 
@@ -278,9 +286,13 @@ object { display: block; }
 
 .newsletter-signup input[type="submit"] { color: #25a9e0; border: 1px solid; }
 
-.newsletter-signup p { width: 100%; max-width: 90vw; margin: 0 auto 2rem; }
+.newsletter-signup p { width: 100%; max-width: 90vw; margin: 0; }
 
-@media all and (min-width: 40em) { .newsletter-signup p { max-width: 470px; } }
+@media all and (min-width: 40em) { .newsletter-signup p { max-width: 480px; } }
+
+.newsletter-signup p + p { margin-bottom: 2rem; }
+
+.newsletter-signup .gfield_required { display: none; }
 
 .circles { display: block; height: 300px; -o-object-fit: contain; object-fit: contain; width: auto; position: absolute; top: 0; right: 0; }
 

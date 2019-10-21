@@ -286,6 +286,7 @@ class StarterSite extends Timber\Site {
 		add_action( 'widgets_init', array( $this, 'register_widgetized_areas' ) );
 		add_action( 'customize_register', array( $this, 'register_customizer_options' ) );
 		add_action( 'acf/init', array( $this, 'register_gutenberg_blocks' ) );
+		add_action( 'gform_enqueue_scripts', array( $this, 'deregister_scripts' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
@@ -294,6 +295,22 @@ class StarterSite extends Timber\Site {
 		add_action( 'wp_head', array( $this, 'register_ga_tracking_code' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts_and_styles' ) );
 		parent::__construct();
+	}
+
+
+	/**
+	 * Disable Gravity Forms styles
+	 *
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 * @access public
+	 */
+	function deregister_scripts() {
+		wp_deregister_style( 'gforms_formsmain_css' );
+		wp_deregister_style( 'gforms_reset_css' );
+		wp_deregister_style( 'gforms_ready_class_css' );
+		wp_deregister_style( 'gforms_browsers_css' );
 	}
 
 
@@ -380,8 +397,9 @@ class StarterSite extends Timber\Site {
 
 		wp_enqueue_script( 'events' );
 		wp_enqueue_script( 'custom' );
+
 		if ( is_front_page() ) {
-			wp_enqueue_script('scriptjs');
+//			wp_enqueue_script('scriptjs');
 		}
 
 	}

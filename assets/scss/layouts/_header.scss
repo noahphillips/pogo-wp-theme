@@ -5,3 +5,22 @@
 	right: 0;
 	left: 0;
 }
+
+.header-link-item {
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	margin-right: 2.5rem;
+
+	&:last-of-type {
+		margin-right: 3rem;
+	}
+
+	&__icon {
+		height: 46px;
+		width: 46px;
+		margin-right: 1rem;
+	}
+
+	&__text {}
+}

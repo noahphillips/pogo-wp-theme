@@ -1,5 +1,14 @@
 .newsletter-signup {
 	position: relative;
+	max-width: 460px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 3rem 0;
+
+	@media (min-width: 1024px) {
+		padding: 6rem 0;
+	}
 
 	form {
 		width: 100%;
@@ -35,11 +44,19 @@
 	p {
 		width: 100%;
 		max-width: 90vw;
-		margin: 0 auto 2rem;
+		margin: 0;
 
 		@media all and (min-width: 40em) {
-			max-width: 470px;
+			max-width: 480px;
 		}
+	}
+
+	p + p {
+		margin-bottom: 2rem;
+	}
+
+	.gfield_required {
+		display: none;
 	}
 }
 
