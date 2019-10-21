@@ -381,7 +381,7 @@ class StarterSite extends Timber\Site {
 		wp_enqueue_script( 'events' );
 		wp_enqueue_script( 'custom' );
 		if ( is_front_page() ) {
-//			wp_enqueue_script('scriptjs');
+			wp_enqueue_script('scriptjs');
 		}
 
 	}
