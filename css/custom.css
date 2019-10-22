@@ -100,6 +100,8 @@ object { display: block; }
 
 .footer-socials__icon:last-of-type { margin-right: 0; }
 
+#fullpage { z-index: 2; }
+
 .main-info img { display: block; width: 100%; -o-object-fit: cover; object-fit: cover; height: auto; }
 
 .main-info-img-wrap { margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; max-width: 100vw; }
@@ -260,7 +262,7 @@ object { display: block; }
 
 .dot:not(.active) { cursor: pointer; }
 
-.videos { position: absolute; top: 40px; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); height: calc(100vh - 240px); width: calc((100vh - 240px) * (15 / 13.1)); pointer-events: none; z-index: -1; }
+.videos { position: absolute; top: 40px; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); height: calc(100vh - 240px); width: calc((100vh - 240px) * (15 / 13.1)); pointer-events: none; z-index: 1; }
 
 @media all and (min-width: 1200px) { .videos { top: 40px; height: calc(100vh - 120px); width: calc((100vh - 120px) * (15 / 13.1)); } }
 
