@@ -21,7 +21,7 @@
 
 		{% if(post.meta('section')) %}
 			{% for item in post.meta('section') %}
-				<section id="section-{{ loop.index }}" class="section active">
+				<section id="section-{{ loop.index }}" class="section {{ loop.index == 1 ? 'active' : ''}} {{ loop.last ? 'last-section' : '' }}">
 					<div class="slide-content ">
 						<h2 class="is-blue title title-3">{{ item.title }}</h2>
 						<h3 class="is-grey title title-2">{{ item.subtitle }}</h3>
@@ -48,7 +48,6 @@
 		<section class="main-info-img-wrap">
 			<img class="mask mask-top" src="{{ theme.link }}/static/images/clipping-mask-top.png" alt="">
 			<img class="main-info-img" src="{{ post.meta('bottom_section_image') }}" alt="">
-			<img class="mask mask-bottom" src="{{ theme.link }}/static/images/clipping-mask-bottom.png" alt="">
 			<article class="content">
 				<div class="main-info-copy">
 					<h2 class="title title-3">{{ post.meta('bottom_section_title') }}</h2>
@@ -62,14 +61,6 @@
 	</main>
 
 	{% set form_shortcode = '[gravityform id=' ~ post.meta('form_id') ~ ' title=false description=false ajax=true]' %}
-
-	<section class="section-newsletter">
-		<div class="newsletter-signup">
-			<h3 class="newsletter-signup__title title title-2">{{ post.meta('newsletter_title') }}</h3>
-			<div class="newsletter-signup__content">{{ post.meta('newsletter_content') }}</div>
-			{{ function('do_shortcode', form_shortcode) }}
-		</div>
-	</section>
 
 	{% if(disclaimer) %}
 		<p style="width:100%;text-align:center;font-size:.8rem;">{{ disclaimer }}</p>
