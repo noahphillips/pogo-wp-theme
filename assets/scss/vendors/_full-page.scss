@@ -270,29 +270,28 @@ html.fp-enabled,
 /*# sourceMappingURL=/fullpage.df5e2b13.css.map */
 
 
-/*
 .fp-destroyed {
-  .section {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    pointer-events: none;
-    z-index: -1;
-    
-    &.active {
-      position: relative;
-      opacity: 1;
-      pointer-events: all;
-      z-index: 1;
-    }
+	.section {
+		position: absolute;
+		top: 0;
+		opacity: 0;
+		pointer-events: none;
+		z-index: -1;
 
-    &.fp-completely,
-    &.active {
-      transition: opacity 1s ease;
-    }
-  }
-  .slide-content {
-    opacity: 1;
-  }
+		&.active {
+			position: relative;
+			opacity: 1;
+			pointer-events: all;
+			z-index: 1;
+		}
+
+		&.fp-completely,
+		&.active {
+			transition: opacity 1s ease;
+		}
+	}
+
+	.slide-content {
+		opacity: 1;
+	}
 }
-*/
