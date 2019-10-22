@@ -21,13 +21,13 @@
 	<header id="header" class="main-background">
 		{% block header %}
 			<div class="header-content">
-				<a href="/" class="header-logo"> <img src="{{ site_logo_url }}" alt="" class="logo"/> </a>
+				<a href="{{ site.url }}" class="header-logo"> <img src="{{ site_logo_url }}" alt="" class="logo"/> </a>
 				<div class="header-controls">
 					<a class="header-link-item" href="{{ site.url }}">
 						<img class="header-link-item__icon" src="{{ theme.link }}/static/images/icon-home.png" alt="">
 						<span class="header-link-item__text">{{ _e('Home', TEXT_DOMAIN) }}</span>
 					</a>
-					<a class="header-link-item" data-modal="sign-in">
+					<a href="https://shop.presspogo.com/account/login" target="_blank" class="header-link-item">
 						<img class="header-link-item__icon" src="{{ theme.link }}/static/images/icon-user.png" alt="">
 						<span class="header-link-item__text">{{ _e('Sign In', TEXT_DOMAIN) }}</span>
 					</a>
