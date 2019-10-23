@@ -9,6 +9,7 @@
 	}
 
 	&-brand {
+
 		& > * {
 			color: white;
 		}
@@ -16,6 +17,11 @@
 		display: grid;
 		grid-gap: .4rem;
 		align-items: center;
+
+		img {
+			width: 150px;
+			height: auto;
+		}
 
 		p {
 			grid-column: 1 / 4;

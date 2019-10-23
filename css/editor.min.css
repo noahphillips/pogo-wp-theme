@@ -187,6 +187,7 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
 .editor-styles-wrapper .footer-content{width:100%;max-width:1100px;margin:0 auto;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:0 1rem 1rem}
 .editor-styles-wrapper .footer-brand{display:grid;grid-gap:.4rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .editor-styles-wrapper .footer-brand>*{color:white}
+.editor-styles-wrapper .footer-brand img{width:150px;height:auto}
 .editor-styles-wrapper .footer-brand p{grid-column:1 / 4;text-align:right;padding-top:.3rem}
 .editor-styles-wrapper .footer-links{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));grid-gap:.3rem;justify-items:start;padding-bottom:2rem}
 .editor-styles-wrapper .footer-links li{padding:.3rem 0}

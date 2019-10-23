@@ -406,6 +406,8 @@ object { display: block; }
 
 .footer-brand > * { color: white; }
 
+.footer-brand img { width: 150px; height: auto; }
+
 .footer-brand p { grid-column: 1 / 4; text-align: right; padding-top: .3rem; }
 
 .footer-links { -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: .3rem; justify-items: start; padding-bottom: 2rem; }
