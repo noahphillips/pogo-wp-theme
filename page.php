@@ -44,6 +44,7 @@ $context['page_decoration']         = get_field( 'page_decoration' );
 $context['decoration_position']     = get_field( 'decoration_position' );
 $context['company_name']            = get_theme_mod( 'company_name' );
 $context['company_address']         = get_theme_mod( 'company_address' );
+$context['gtm_script_tag']          = $gtm_script_tag;
 $context['site_logo']               = $site_logo;
 $context['footer_logo']             = $footer_logo;
 $context['show_footer_social']      = $show_footer_social;

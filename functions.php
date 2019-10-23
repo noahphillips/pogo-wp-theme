@@ -62,11 +62,6 @@ function my_acf_block_render_callback( $block, $content = '', $is_preview = fals
 	// Store $is_preview value.
 	$context['is_preview'] = $is_preview;
 
-	if ( $slug === 'resources' && get_field( 'type' ) === 'uberflip' ) {
-		$items                      = get_uberflip_items( get_field( 'stream_id' ), get_field( 'limit' ) );
-		$context['fields']['items'] = $items;
-	}
-
 	// Render the block.
 	Timber::render( 'templates/blocks/block-' . $slug . '.twig', $context );
 }
@@ -160,117 +155,6 @@ function render_contact_details() {
 
 	<?php
 }
-
-
-/**
- * Register Google Analytics Tracking Code
- *
- * @return void
- * @since  1.0.0
- * @access public
- */
-function register_ga_tracking_code() {
-	?>
-	<?php if ( get_theme_mod( 'pogo_ga_script' ) ) : ?>
-		<script>
-			(function (i, s, o, g, r, a, m) {
-				i['GoogleAnalyticsObject'] = r;
-				i[r] = i[r] || function () {
-					(i[r].q = i[r].q || []).push(arguments)
-				}, i[r].l = 1 * new Date();
-				a = s.createElement(o),
-					m = s.getElementsByTagName(o)[0];
-				a.async = 1;
-				a.src = g;
-				m.parentNode.insertBefore(a, m)
-			})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-			ga('create', '<?php echo get_theme_mod( 'pogo_ga_script' ); ?>', 'auto');
-
-			ga('send', 'pageview');
-
-		</script>
-	<?php endif; ?>
-	<?php
-}
-
-
-/**
- * Register GTM
- *
- * @return void
- * @since  1.0.0
- * @access public
- */
-function register_gtm() {
-	?>
-	<?php if ( get_theme_mod( 'pogo_gtm_script' ) ) : ?>
-		<!-- Google Tag Manager -->
-		<script>(function (w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({
-					'gtm.start':
-						new Date().getTime(), event: 'gtm.js'
-				});
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-				j.async = true;
-				j.src =
-					'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, 'script', 'dataLayer', '<?php echo get_theme_mod( 'pogo_gtm_script' ); ?>');
-		</script>
-		<!-- End Google Tag Manager -->
-	<?php endif; ?>
-	<?php
-}
-
-/**
- * Register Facebook Pixel
- *
- * @return void
- * @since  1.0.0
- * @access public
- */
-function register_facebook_pixel() {
-	?>
-	<?php if ( get_theme_mod( 'pogo_fbp_script' ) ) : ?>
-		<!-- Facebook Pixel Code -->
-		<script>
-			!function (f, b, e, v, n, t, s) {
-				if(f.fbq) return;
-				n = f.fbq = function () {
-					n.callMethod ?
-						n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-				};
-				if(!f._fbq) f._fbq = n;
-				n.push = n;
-				n.loaded = !0;
-				n.version = '2.0';
-				n.queue = [];
-				t = b.createElement(e);
-				t.async = !0;
-				t.src = v;
-				s = b.getElementsByTagName(e)[0];
-				s.parentNode.insertBefore(t, s)
-			}(window, document, 'script',
-				'https://connect.facebook.net/en_US/fbevents.js');
-			fbq('init', '<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>');
-			fbq('track', 'PageView');
-		</script>
-		<noscript><img height="1" width="1" style="display:none"
-					   src="https://www.facebook.com/tr?id=<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>"
-					   &ev=PageView&noscript=1"
-			/></noscript>
-		<!-- End Facebook Pixel Code -->
-	<?php endif; ?>
-	<?php
-}
-
-//
-//
-//
-
 
 /**
  * We're going to configure our theme inside of a subclass of Timber\Site
@@ -401,10 +285,116 @@ class StarterSite extends Timber\Site {
 		wp_enqueue_script( 'custom' );
 
 		if ( is_front_page() ) {
-			wp_enqueue_script('scriptjs');
+			wp_enqueue_script( 'scriptjs' );
 		}
 
 	}
+
+
+	/**
+	 * Register Google Analytics Tracking Code
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 * @access public
+	 */
+	function register_ga_tracking_code() {
+		?>
+		<?php if ( get_theme_mod( 'pogo_ga_script' ) ) : ?>
+			<script>
+				(function (i, s, o, g, r, a, m) {
+					i['GoogleAnalyticsObject'] = r;
+					i[r] = i[r] || function () {
+						(i[r].q = i[r].q || []).push(arguments)
+					}, i[r].l = 1 * new Date();
+					a = s.createElement(o),
+						m = s.getElementsByTagName(o)[0];
+					a.async = 1;
+					a.src = g;
+					m.parentNode.insertBefore(a, m)
+				})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+				ga('create', '<?php echo get_theme_mod( 'pogo_ga_script' ); ?>', 'auto');
+
+				ga('send', 'pageview');
+
+			</script>
+		<?php endif; ?>
+		<?php
+	}
+
+
+	/**
+	 * Register GTM
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 * @access public
+	 */
+	function register_gtm() {
+		?>
+		<?php if ( get_theme_mod( 'pogo_gtm_script' ) ) : ?>
+			<!-- Google Tag Manager -->
+			<script>(function (w, d, s, l, i) {
+					w[l] = w[l] || [];
+					w[l].push({
+						'gtm.start':
+							new Date().getTime(), event: 'gtm.js'
+					});
+					var f = d.getElementsByTagName(s)[0],
+						j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+					j.async = true;
+					j.src =
+						'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+					f.parentNode.insertBefore(j, f);
+				})(window, document, 'script', 'dataLayer', '<?php echo get_theme_mod( 'pogo_gtm_script' ); ?>');
+			</script>
+			<!-- End Google Tag Manager -->
+		<?php endif; ?>
+		<?php
+	}
+
+	/**
+	 * Register Facebook Pixel
+	 *
+	 * @return void
+	 * @since  1.0.0
+	 * @access public
+	 */
+	function register_facebook_pixel() {
+		?>
+		<?php // if ( get_theme_mod( 'pogo_fbp_script' ) ) : ?>
+		<!-- Facebook Pixel Code -->
+		<script>
+			!function (f, b, e, v, n, t, s) {
+				if(f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod ?
+						n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+				};
+				if(!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = '2.0';
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s)
+			}(window, document, 'script',
+				'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>');
+			fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+					   src="https://www.facebook.com/tr?id=<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>"
+					   &ev=PageView&noscript=1"
+			/></noscript>
+		<!-- End Facebook Pixel Code -->
+		<?php // endif;
+	}
+
 
 	/**
 	 * Register sidebars.
