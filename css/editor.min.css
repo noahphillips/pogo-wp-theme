@@ -38,6 +38,7 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
  *
  * Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
  */}
+.editor-styles-wrapper body{overflow-x:hidden !important}
 .editor-styles-wrapper object{display:block}
 .editor-styles-wrapper .main-background{background-size:cover;background-repeat:no-repeat}
 .editor-styles-wrapper .main-background-center{background-position:center center}

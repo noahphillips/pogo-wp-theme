@@ -66,6 +66,8 @@ a { -webkit-transition: color .3s; transition: color .3s; text-decoration: none;
 
 .main-background { width: 100%; background-image: linear-gradient(45deg, #25a8df 0%, #2aaadc 22.43%, #39b1d4 49.71%, #52bbc7 79.39%, #67c4bb 100%); }
 
+body { overflow-x: hidden !important; }
+
 object { display: block; }
 
 .main-background { background-size: cover; background-repeat: no-repeat; }
@@ -102,7 +104,7 @@ object { display: block; }
 
 .footer-socials__icon:last-of-type { margin-right: 0; }
 
-#fullpage { z-index: 2; }
+#fullpage { height: 100vh !important; z-index: 2; }
 
 .main-info img { display: block; width: 100%; -o-object-fit: cover; object-fit: cover; height: auto; }
 
