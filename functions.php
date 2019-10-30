@@ -505,6 +505,67 @@ class StarterSite extends Timber\Site {
 		);
 		register_post_type( 'leadership', $brand_args );
 
+
+		# Register custom post type Client Logo
+		/**
+		 * Registers post types needed by the theme.
+		 *
+		 * @return void
+		 * @since  1.1.0
+		 * @access public
+		 */
+		$brand_labels = array(
+			'name'                  => _x( 'Career', 'Post Type General Name', TEXT_DOMAIN ),
+			'singular_name'         => _x( 'Career', 'Post Type Singular Name', TEXT_DOMAIN ),
+			'menu_name'             => __( 'Career', TEXT_DOMAIN ),
+			'name_admin_bar'        => __( 'Career', TEXT_DOMAIN ),
+			'archives'              => __( 'Career Archives', TEXT_DOMAIN ),
+			'attributes'            => __( 'Career Attributes', TEXT_DOMAIN ),
+			'parent_item_colon'     => __( 'Parent Career:', TEXT_DOMAIN ),
+			'all_items'             => __( 'All members', TEXT_DOMAIN ),
+			'add_new_item'          => __( 'Add New member', TEXT_DOMAIN ),
+			'add_new'               => __( 'Add New', TEXT_DOMAIN ),
+			'new_item'              => __( 'New Career member', TEXT_DOMAIN ),
+			'edit_item'             => __( 'Edit Career member', TEXT_DOMAIN ),
+			'update_item'           => __( 'Update Career member', TEXT_DOMAIN ),
+			'view_item'             => __( 'View Career member', TEXT_DOMAIN ),
+			'view_items'            => __( 'View Career members', TEXT_DOMAIN ),
+			'search_items'          => __( 'Search Career member', TEXT_DOMAIN ),
+			'not_found'             => __( 'Not found', TEXT_DOMAIN ),
+			'not_found_in_trash'    => __( 'Not found in Trash', TEXT_DOMAIN ),
+			'featured_image'        => __( 'Featured Image', TEXT_DOMAIN ),
+			'set_featured_image'    => __( 'Set featured image', TEXT_DOMAIN ),
+			'remove_featured_image' => __( 'Remove featured image', TEXT_DOMAIN ),
+			'use_featured_image'    => __( 'Use as featured image', TEXT_DOMAIN ),
+			'insert_into_item'      => __( 'Insert into Career', TEXT_DOMAIN ),
+			'uploaded_to_this_item' => __( 'Uploaded to this Career', TEXT_DOMAIN ),
+			'items_list'            => __( 'Career members list', TEXT_DOMAIN ),
+			'items_list_navigation' => __( 'Career members list navigation', TEXT_DOMAIN ),
+			'filter_items_list'     => __( 'Filter Career members list', TEXT_DOMAIN ),
+		);
+		$brand_args   = array(
+			'label'               => __( 'Career Member', TEXT_DOMAIN ),
+			'description'         => __( 'Career Member', TEXT_DOMAIN ),
+			'labels'              => $brand_labels,
+			'supports'            => array( 'title', 'editor', 'thumbnail' ),
+			'menu_icon'           => 'dashicons-businessperson',
+			'taxonomies'          => array(),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 10,
+			'show_in_admin_bar'   => true,
+			'show_in_nav_menus'   => true,
+			'show_in_rest'        => true,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+		);
+		register_post_type( 'career', $brand_args );
+
 	}
 
 	/** This is where you can register custom taxonomies. */
@@ -541,6 +602,23 @@ class StarterSite extends Timber\Site {
 			'category'        => 'formatting',
 			'icon'            => 'admin-comments',
 			'keywords'        => array( 'member', 'members', 'leadership' ),
+		) );
+
+		/**
+		 * Registers Careers List ACF Gutenberg block
+		 *
+		 * @return void
+		 * @since  1.0.0
+		 * @access public
+		 */
+		acf_register_block( array(
+			'name'            => 'careers-list',
+			'title'           => __( 'Careers List' ),
+			'description'     => __( 'a custom Gutenberg Block to display Career Items.' ),
+			'render_callback' => 'my_acf_block_render_callback',
+			'category'        => 'formatting',
+			'icon'            => 'admin-comments',
+			'keywords'        => array( 'career', 'careers' ),
 		) );
 
 		/**
@@ -837,7 +915,57 @@ class StarterSite extends Timber\Site {
 		);
 
 		/**
-		 * Social site icons for Quick Menu bar
+		 * General Settings Section
+		 *
+		 * @link: https://www.competethemes.com/social-icons-wordpress-menu-theme-customizer/
+		 */
+		$wp_customize->add_section( 'general_settings', array(
+			'title'    => __( 'General Settings', TEXT_DOMAIN ),
+			'priority' => 105,
+		) );
+
+		/**
+		 * Careers Page setting example.
+		 *
+		 * - Setting: Careers Page
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Careers Page for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting( 'pogo_careers_page',
+			array(
+				'default' => $this->defaults['pogo_careers_page'],
+				'transport' => 'refresh',
+//				'sanitize_callback' => 'absint'
+			)
+		);
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Careers Page
+		 *
+		 * Register the core "text" control to be used to configure the Careers Page Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control( 'pogo_careers_page',
+			array(
+				'label' => __( 'Careers Page', TEXT_DOMAIN ),
+				'section' => 'general_settings',
+				'type' => 'dropdown-pages'
+			)
+		);
+
+
+
+		/**
+		 * Contact Details Section
 		 *
 		 * @link: https://www.competethemes.com/social-icons-wordpress-menu-theme-customizer/
 		 */

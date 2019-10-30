@@ -1,0 +1,22 @@
+{#
+/**
+ * Block Name: Careers List
+ *
+ * This is the template that displays the Leadership Members.
+ *
+ * @since  1.0.0
+ */
+#}
+
+<div id="{{ block.id }}" class="component careers">
+
+	{% if fields.career %}
+		<p><strong>{{ _e('Current Job Openings:', TEXT_DOMAIN) }}</strong></p>
+		<ul class="font-body is-small">
+			{% for item in fields.career %}
+				<li><a href="{{ function('get_the_permalink', item.ID) }}">{{ item.post_title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+</div>
