@@ -20,7 +20,7 @@
 				{% if summary %}
 					<br>
 					<h3>{{ _e('Position Summary:', TEXT_DOMAIN) }}</h3>
-					{{ summary }}
+					<div class="font-body is-small has-top-marg-sml">{{ summary }}</div>
 				{% endif %}
 
 				{% if position_description %}
@@ -35,7 +35,6 @@
 				{% endif %}
 
 				{% if position_qualifications %}
-				<br>
 				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Position Qualifications:', TEXT_DOMAIN) }}</h3>
 				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
 					{% endif %}
@@ -46,8 +45,18 @@
 				</ul>
 				{% endif %}
 
+				{% if desired_skills %}
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Desired Skills:', TEXT_DOMAIN) }}</h3>
+				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
+					{% endif %}
+					{% for item in desired_skills %}
+						<li>{{ item.text }}</li>
+					{% endfor %}
+					{% if desired_skills %}
+				</ul>
+				{% endif %}
+
 				{% if minimum_education %}
-				<br>
 				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Minimum Education:', TEXT_DOMAIN) }}</h3>
 				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
 					{% endif %}
@@ -59,7 +68,6 @@
 				{% endif %}
 
 				{% if minimum_experience %}
-				<br>
 				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Minimum Experience:', TEXT_DOMAIN) }}</h3>
 				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
 					{% endif %}
@@ -70,14 +78,22 @@
 				</ul>
 				{% endif %}
 
+				{% if supervised_by %}
+					<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Supervised by:', TEXT_DOMAIN) }}</h3>
+					<p class="font-body is-small">{{ supervised_by }}</p>
+				{% endif %}
+
+				{% if supervision %}
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Supervision:', TEXT_DOMAIN) }}</h3>
+				<p class="font-body is-small">{{ supervision }}</p>
+				{% endif %}
+
 				{% if salary %}
-				<br>
-				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Salary:', TEXT_DOMAIN) }}</h3>
-				<p class="font-body is-small">{{ salary }}</p>
+					<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Salary:', TEXT_DOMAIN) }}</h3>
+					<p class="font-body is-small">{{ salary }}</p>
 				{% endif %}
 
 				{% if working_conditions %}
-					<br>
 					<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Working Conditions:', TEXT_DOMAIN) }}</h3>
 					<p class="font-body is-small">{{ working_conditions }}</p>
 				{% endif %}

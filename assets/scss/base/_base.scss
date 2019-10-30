@@ -78,6 +78,10 @@ p,
 
 	&.is-small {
 		font-size: map-get($fontSizes, "sml") / 16 + rem;
+
+		p {
+			font-size: map-get($fontSizes, "sml") / 16 + rem;
+		}
 	}
 }
 

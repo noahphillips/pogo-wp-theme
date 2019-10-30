@@ -52,6 +52,8 @@ p, .font-body { font-size: 1.25rem; font-family: "Guillon-Light", sans-serif; ma
 
 p.is-small, .font-body.is-small { font-size: 1rem; }
 
+p.is-small p, .font-body.is-small p { font-size: 1rem; }
+
 video { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
 
 video.active { opacity: 1; }
