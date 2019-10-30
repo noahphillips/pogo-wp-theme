@@ -1,0 +1,94 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+
+		<section class="heading-content">
+			<h1 class="title title-1 is-centered is-grey">{{ post.title }}</h1>
+		</section>
+
+		<main class="site-content">
+			{% if(page_decoration) %}
+				<img src="{{ page_decoration }}" alt="" class="heading-icon {{ decoration_position }}">
+			{% endif %}
+
+			<div class="content is-grey">
+
+				<p><a href="{{ function('get_the_permalink', careers_page) }}"><i class="fa fa-chevron-left"></i> {{ _e('Back to careers page', TEXT_DOMAIN) }}</a></p>
+
+				{% if summary %}
+					<br>
+					<h3>{{ _e('Position Summary:', TEXT_DOMAIN) }}</h3>
+					{{ summary }}
+				{% endif %}
+
+				{% if position_description %}
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Position Description and Responsibilities:', TEXT_DOMAIN) }}</h3>
+				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
+					{% endif %}
+					{% for item in position_description %}
+						<li>{{ item.text }}</li>
+					{% endfor %}
+					{% if position_description %}
+				</ul>
+				{% endif %}
+
+				{% if position_qualifications %}
+				<br>
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Position Qualifications:', TEXT_DOMAIN) }}</h3>
+				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
+					{% endif %}
+					{% for item in position_qualifications %}
+						<li>{{ item.text }}</li>
+					{% endfor %}
+					{% if position_qualifications %}
+				</ul>
+				{% endif %}
+
+				{% if minimum_education %}
+				<br>
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Minimum Education:', TEXT_DOMAIN) }}</h3>
+				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
+					{% endif %}
+					{% for item in minimum_education %}
+						<li>{{ item.text }}</li>
+					{% endfor %}
+					{% if minimum_education %}
+				</ul>
+				{% endif %}
+
+				{% if minimum_experience %}
+				<br>
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Minimum Experience:', TEXT_DOMAIN) }}</h3>
+				<ul class="font-body is-small has-bullets has-bottom-marg-xlrg">
+					{% endif %}
+					{% for item in minimum_experience %}
+						<li>{{ item.text }}</li>
+					{% endfor %}
+					{% if minimum_experience %}
+				</ul>
+				{% endif %}
+
+				{% if salary %}
+				<br>
+				<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Salary:', TEXT_DOMAIN) }}</h3>
+				<p class="font-body is-small">{{ salary }}</p>
+				{% endif %}
+
+				{% if working_conditions %}
+					<br>
+					<h3 class="has-bottom-marg-sml has-top-marg-med">{{ _e('Working Conditions:', TEXT_DOMAIN) }}</h3>
+					<p class="font-body is-small">{{ working_conditions }}</p>
+				{% endif %}
+
+			</div>
+		</main>
+
+		{% if(disclaimer) %}
+			<p style="width:100%;text-align:center;font-size:.8rem;">{{ disclaimer }}</p>
+		{% endif %}
+
+	</article>
+	{% include "partial/modal-signin.twig" %}
+{% endblock %}
