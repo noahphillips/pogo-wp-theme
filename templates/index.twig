@@ -2,8 +2,7 @@
 
 {% block content %}
 
-	<img src="{{ post.meta('page_decoration') }}" alt="" class="heading-icon {{ post.meta('decoration_position') }}">
-
+	<img src="{{ theme.link }}/static/images/ring.svg" alt="" class="heading-icon right">
 
 	{% if(post.meta('videos') or post.meta('reverse_videos')) %}
 		<div class="videos">

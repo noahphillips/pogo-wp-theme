@@ -350,7 +350,7 @@ object { display: block; }
 
 .heading-icon { display: none; -o-object-fit: contain; object-fit: contain; height: auto; width: 12rem; position: absolute; bottom: auto; left: 2rem; top: 0; margin-top: -6rem; z-index: 2; }
 
-.heading-icon.right { right: 0; left: auto; margin-top: 0; top: 0; width: 25vw; }
+.heading-icon.right { right: 0; left: auto; margin-top: 0; top: -4rem; width: 25vw; }
 
 .home .heading-icon.right { top: auto; }
 
