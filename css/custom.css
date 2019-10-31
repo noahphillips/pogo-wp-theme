@@ -254,9 +254,9 @@ object { display: block; }
 
 .logo { display: block; height: auto; width: auto; max-height: 3.8rem; -o-object-fit: contain; object-fit: contain; cursor: pointer; }
 
-.dots { position: absolute; left: .6rem; top: calc(50% + 2.25rem); -webkit-transform: translateY(-50%); transform: translateY(-50%); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: 10rem; -ms-flex-pack: distribute; justify-content: space-around; z-index: 3; }
+.dots { position: absolute; left: .6rem; top: calc(50% + 1.25rem); -webkit-transform: translateY(-50%); transform: translateY(-50%); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: 10rem; -ms-flex-pack: distribute; justify-content: space-around; z-index: 3; }
 
-@media all and (min-width: 800px) { .dots { left: 6rem; } }
+@media all and (min-width: 800px) { .dots { left: 6rem; top: calc(50% + 2.25rem); } }
 
 .dots.frozen { pointer-events: none; }
 
@@ -279,6 +279,10 @@ object { display: block; }
 .fp-destroyed .slide-content::before { background: transparent; }
 
 .slide-content > * { position: relative; }
+
+.slide-content p { font-size: 16px; }
+
+@media screen and (min-width: 800px) { .slide-content p { font-size: 20px; } }
 
 .active .slide-content { opacity: 1; -webkit-transition: opacity 0.4s 1.2s ease-in; transition: opacity 0.4s 1.2s ease-in; }
 
