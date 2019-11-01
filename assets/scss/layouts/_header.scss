@@ -17,9 +17,14 @@
 	}
 
 	&__icon {
-		height: 46px;
-		width: 46px;
+		height: 30px;
+		width: 30px;
 		margin-right: 1rem;
+
+		@media screen and (min-width: 768px) {
+			height: 46px;
+			width: 46px;
+		}
 	}
 
 	&__text {}

@@ -12,6 +12,10 @@
 		position: relative;
 		transition: opacity 0.2s ease-out;
 
+		@media screen and (min-width: 1200px) {
+			max-width: 900px;
+		}
+
 		&::before {
 			content: '';
 			display: block;
@@ -30,11 +34,22 @@
 			position: relative;
 		}
 
+		h3 {
+			@media screen and (min-width: 1200px) {
+				font-size: 2rem;
+				margin-bottom: 0.25em;
+			}
+		}
+
 		p {
 			font-size: 16px;
 
 			@media screen and (min-width: 800px) {
 				font-size: 20px;
+			}
+
+			@media screen and (min-width: 1200px) {
+				font-size: 18px;
 			}
 		}
 

@@ -1,17 +1,23 @@
 .videos {
-	position: absolute;
-	top: 40px;
-	left: 50%;
-	transform: translateX(-50%);
 	height: calc(100vh - 240px);
-	width: calc((100vh - 240px) * (15 / 13.1));
+	left: 50%;
+	max-width: 100%;
 	pointer-events: none;
+	position: absolute;
+	top: 140px;
+	transform: translateX(-50%);
 	z-index: 1;
+	width: calc((100vh - 240px) * (15 / 13.1));
+
+
+	@media screen and (min-width: 768px) {
+		top: 60px;
+	}
 
 	@media all and (min-width: 1200px) {
-		top: 40px;
-		height: calc(100vh - 120px);
-		width: calc((100vh - 120px) * (15 / 13.1));
+		top: 50px;
+		height: calc(100vh - 160px);
+		width: calc((100vh - 160px) * (15 / 13.1));
 	}
 
 	&::after {
