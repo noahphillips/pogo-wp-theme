@@ -1,15 +1,10 @@
 .heading {
 
 	&-content {
+		padding: 3rem 0;
 		position: relative;
-		padding: 5rem 0;
 		text-align: center;
-		background-color: #f4f4f4;
-		border: 0;
-		border-bottom-right-radius: 100%;
-		border-bottom-left-radius: 100%;
-		color: #6d6e70;
-		z-index: 3;
+		z-index: 1;
 	}
 
 	&-icon {

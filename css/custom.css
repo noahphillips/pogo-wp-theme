@@ -40,7 +40,7 @@ hr { border: none; border-top: 1px solid rgba(59, 59, 60, 0.5); margin: 2.5rem 0
 
 .title { margin-bottom: 0.5em; line-height: 1.2; }
 
-.title.is-centered { max-width: 58.75rem; margin: auto; }
+.title.is-centered { max-width: 46rem; margin: auto; }
 
 .title-1 { font-size: 3.75rem; font-family: "Guillon-Thin", sans-serif; }
 
@@ -80,9 +80,9 @@ object { display: block; }
 
 .section { height: 100vh; }
 
-.site-content { padding-top: 7rem; }
+.site-content { padding-top: 5rem; }
 
-@media all and (min-width: 75em) { .site-content { padding-top: 5.7rem; } }
+@media all and (min-width: 75em) { .site-content { padding-top: 3rem; } }
 
 .content { width: 100%; max-width: 940px; -webkit-box-flex: 1; -ms-flex: 1 0 auto; flex: 1 0 auto; margin: 0 auto; padding: 2.5rem 1rem; position: relative; }
 
@@ -358,7 +358,7 @@ object { display: block; }
 
 .nav-item a, .nav-item span { padding: 1rem 1.6rem; display: block; color: #6d6e70; -webkit-transition: color .3s; transition: color .3s; }
 
-.heading-content { position: relative; padding: 5rem 0; text-align: center; background-color: #f4f4f4; border: 0; border-bottom-right-radius: 100%; border-bottom-left-radius: 100%; color: #6d6e70; z-index: 3; }
+.heading-content { padding: 3rem 0; position: relative; text-align: center; z-index: 1; }
 
 .heading-icon { display: none; -o-object-fit: contain; object-fit: contain; height: auto; width: 12rem; position: absolute; bottom: auto; left: 2rem; top: 0; margin-top: -6rem; z-index: 2; }
 
