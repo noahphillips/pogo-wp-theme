@@ -20,16 +20,24 @@
 
 		{% if(post.meta('section')) %}
 			{% for item in post.meta('section') %}
-				<section id="section-{{ loop.index }}" class="section {{ loop.index == 1 ? 'active' : ''}} {{ loop.last ? 'last-section' : '' }}">
+				<section id="section-{{ loop.index }}" class="section {{ loop.index == 1 ? 'active' : '' }} {{ loop.last ? 'last-section' : '' }}">
 					<div class="slide-content ">
 						<h2 class="is-blue title title-3">{{ item.title }}</h2>
 						<h3 class="is-grey title title-2">{{ item.subtitle }}</h3>
 						<div class="is-grey font-body">
 							{{ item.content }}
 						</div>
+						{% if (loop.last) %}
+							<div class="slide-content-arrow">
+								<img src="{{ theme.link }}/static/images/caret-down.png" alt="">
+							</div>
+						{% endif %}
 					</div>
 				</section>
 			{% endfor %}
+
+
+
 		{% endif %}
 
 	</div>

@@ -4,6 +4,16 @@
 	width: 100%;
 	right: 0;
 	left: 0;
+
+	&.sticky {
+		.header-logo {
+			display: none;
+		}
+
+		.header-controls {
+			margin-top: 0;
+		}
+	}
 }
 
 .header-link-item {
