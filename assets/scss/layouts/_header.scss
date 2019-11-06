@@ -4,6 +4,12 @@
 	width: 100%;
 	right: 0;
 	left: 0;
+	max-width: 100vw;
+
+
+	@media screen and (min-width: 768px) {
+		max-width: 100%;
+	}
 
 	&.sticky {
 		.header-logo {
@@ -37,5 +43,6 @@
 		}
 	}
 
-	&__text {}
+	&__text {
+	}
 }
