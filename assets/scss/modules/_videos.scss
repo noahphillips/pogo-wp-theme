@@ -4,15 +4,10 @@
 	max-width: 100%;
 	pointer-events: none;
 	position: absolute;
-	top: 140px;
+	top: 60px;
 	transform: translateX(-50%);
 	z-index: 1;
 	width: calc((100vh - 240px) * (15 / 13.1));
-
-
-	@media screen and (min-width: 768px) {
-		top: 60px;
-	}
 
 	@media all and (min-width: 1200px) {
 		top: 50px;

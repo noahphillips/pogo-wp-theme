@@ -96,13 +96,15 @@ object { display: block; }
 
 #header.sticky .header-controls { margin-top: 0; }
 
-.header-link-item { color: #ffffff; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-right: 2.5rem; }
+.header-link-item { color: #ffffff; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-right: 1rem; }
+
+@media screen and (min-width: 768px) { .header-link-item { margin-right: 2.5rem; } }
 
 .header-link-item:last-of-type { margin-right: 3rem; }
 
-.header-link-item__icon { height: 30px; width: 30px; margin-right: 1rem; }
+.header-link-item__icon { display: none; }
 
-@media screen and (min-width: 768px) { .header-link-item__icon { height: 46px; width: 46px; } }
+@media screen and (min-width: 768px) { .header-link-item__icon { display: inline-block; margin-right: 1rem; height: 46px; width: 46px; } }
 
 #footer { -ms-flex-negative: 0; flex-shrink: 0; padding: 2rem 0; position: relative; z-index: 2; }
 
@@ -258,7 +260,7 @@ object { display: block; }
 
 .leadership-member { border-bottom: 1px solid rgba(59, 59, 60, 0.5); margin-bottom: 2rem; padding-bottom: 1rem; }
 
-.logo { display: block; height: auto; width: auto; max-height: 3.8rem; -o-object-fit: contain; object-fit: contain; cursor: pointer; }
+.logo { display: block; max-width: 100px; }
 
 .dots { position: absolute; left: .6rem; top: calc(50% - 2rem); -webkit-transform: translateY(-50%); transform: translateY(-50%); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: 10rem; -ms-flex-pack: distribute; justify-content: space-around; z-index: 3; }
 
@@ -274,21 +276,19 @@ object { display: block; }
 
 .dot:not(.active) { cursor: pointer; }
 
-.videos { height: calc(100vh - 240px); left: 50%; max-width: 100%; pointer-events: none; position: absolute; top: 140px; -webkit-transform: translateX(-50%); transform: translateX(-50%); z-index: 1; width: calc((100vh - 240px) * (15 / 13.1)); }
-
-@media screen and (min-width: 768px) { .videos { top: 60px; } }
+.videos { height: calc(100vh - 240px); left: 50%; max-width: 100%; pointer-events: none; position: absolute; top: 60px; -webkit-transform: translateX(-50%); transform: translateX(-50%); z-index: 1; width: calc((100vh - 240px) * (15 / 13.1)); }
 
 @media all and (min-width: 1200px) { .videos { top: 50px; height: calc(100vh - 160px); width: calc((100vh - 160px) * (15 / 13.1)); } }
 
 .videos::after { content: ""; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(245, 245, 245, 0)), color-stop(95%, #f5f5f5)), -webkit-gradient(linear, left top, right top, from(#f5f5f5), color-stop(10%, rgba(245, 245, 245, 0)), color-stop(90%, rgba(245, 245, 245, 0)), to(#f5f5f5)); background: linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); z-index: 3; }
 
-.slide-content { height: 100%; max-width: 100%; margin: 0 auto; padding: 1rem 1rem 1rem 3rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; opacity: 0; position: relative; -webkit-transition: opacity 0.2s ease-out; transition: opacity 0.2s ease-out; }
+.slide-content { height: 100%; max-width: 100%; margin: 0 auto; padding: 1rem 1rem 0.5rem 3rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; opacity: 0; position: relative; -webkit-transition: opacity 0.2s ease-out; transition: opacity 0.2s ease-out; }
 
 @media screen and (min-width: 768px) { .slide-content { padding: 1rem; } }
 
 @media screen and (min-width: 768px) { .slide-content { max-width: 750px; } }
 
-.slide-content-arrow { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-transform: translateY(-1.5rem); transform: translateY(-1.5rem); }
+.slide-content-arrow { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-top: 1rem; }
 
 .slide-content-arrow img { height: 20px; width: 35px; }
 
@@ -298,11 +298,13 @@ object { display: block; }
 
 .fp-destroyed .slide-content::before { background: transparent; }
 
+.slide-content__body { margin-bottom: 0; }
+
 .slide-content > * { position: relative; }
 
 @media screen and (min-width: 1200px) { .slide-content h3 { font-size: 2rem; margin-bottom: 0.25em; } }
 
-.slide-content p { font-size: 16px; }
+.slide-content p { font-size: 16px; margin-bottom: 0; }
 
 @media screen and (min-width: 800px) { .slide-content p { font-size: 20px; } }
 
@@ -430,15 +432,17 @@ object { display: block; }
 
 .contact [data-map="google"] iframe { width: 100%; }
 
-.header-content { position: relative; width: 100%; max-width: 100%; padding: 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
-
-@media screen and (min-width: 768px) { .header-content { -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; } }
+.header-content { position: relative; width: 100%; max-width: 100%; padding: 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
 
 @media screen and (min-width: 1200px) { .header-content { max-width: 1100px; } }
 
-.header-controls { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -ms-flex: 0 0 100%; flex: 0 0 100%; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; margin-top: 2rem; width: 100%; }
+.header-controls { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; width: 100%; }
 
 @media screen and (min-width: 768px) { .header-controls { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row nowrap; flex-flow: row nowrap; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; margin-top: 0; width: auto; } }
+
+.header-logo { margin-right: 3rem; }
+
+@media screen and (min-width: 768px) { .header-logo { margin-right: 1rem; } }
 
 .header-button { display: block; padding: .5rem 1rem; margin-right: 3rem; border-radius: 5px; border: 0; color: #3399CC; font-family: "Guillon", sans-serif; font-size: .8rem; background-color: white; -webkit-transition: color .3s, background-color .3s; transition: color .3s, background-color .3s; cursor: pointer; opacity: 1; -webkit-appearance: none; }
 
@@ -465,6 +469,8 @@ object { display: block; }
 .footer-links a:hover { color: white; }
 
 .footer-links a:hover:before { visibility: visible; -webkit-transform: scaleX(1); transform: scaleX(1); }
+
+.page-id-35 a[href^="tel"] { color: inherit; /* Inherit text color of parent element. */ text-decoration: none; /* Remove underline. */ /* Additional css `propery: value;` pairs here */ }
 
 /*! fullPage 3.0.4 https://github.com/alvarotrigo/fullPage.js @license GPLv3 for open source use only or Fullpage Commercial License for commercial use http://alvarotrigo.com/fullPage/pricing/ Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo */
 html.fp-enabled, .fp-enabled body { margin: 0; padding: 0; overflow: hidden; /*Avoid flicker on slides transitions for mobile phones #336 */ -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }

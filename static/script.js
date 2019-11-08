@@ -64,6 +64,7 @@ for (let i = 0; i < dots.length; i++) {
 }
 
 function playVid(video) {
+	console.log('Play vid');
 	freeze();
 	video.addEventListener("ended", unfreeze);
 	video.play();

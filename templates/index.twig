@@ -10,7 +10,7 @@
 				<video src="{{ item.video }}" playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}"></video>
 			{% endfor %}
 			{% for item in post.meta('reverse_videos') %}
-				<video src="{{ item.video }}" muted preload="auto" id="r{{ loop.index }}"></video>
+				<video src="{{ item.video }}" playsinline muted preload="auto" id="r{{ loop.index }}"></video>
 			{% endfor %}
 		</div>
 	{% endif %}
@@ -24,12 +24,14 @@
 					<div class="slide-content ">
 						<h2 class="is-blue title title-3">{{ item.title }}</h2>
 						<h3 class="is-grey title title-2">{{ item.subtitle }}</h3>
-						<div class="is-grey font-body">
+						<div class="slide-content__body is-grey font-body">
 							{{ item.content }}
 						</div>
 						{% if (loop.last) %}
 							<div class="slide-content-arrow">
-								<img src="{{ theme.link }}/static/images/caret-down.png" alt="">
+								<a href="#main">
+									<img src="{{ theme.link }}/static/images/caret-down.png" alt="">
+								</a>
 							</div>
 						{% endif %}
 					</div>
@@ -50,7 +52,7 @@
 		</div>
 	{% endif %}
 
-	<main class="main-info">
+	<main id="main" class="main-info">
 		<section class="main-info-img-wrap">
 			<img class="mask mask-top" src="{{ theme.link }}/static/images/clipping-mask-top.png" alt="">
 			<img class="main-info-img" src="{{ post.meta('bottom_section_image') }}" alt="">

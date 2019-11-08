@@ -8,10 +8,9 @@
 		display: flex;
 		margin: 0 auto;
 		align-items: center;
-		flex-direction: column;
+		flex-direction: row;
 
 		@media screen and (min-width: 768px) {
-			flex-direction: row;
 		}
 
 		@media screen and (min-width: 1200px) {
@@ -22,9 +21,7 @@
 	&-controls {
 		align-items: center;
 		display: flex;
-		flex: 0 0 100%;
 		justify-content: space-between;
-		margin-top: 2rem;
 		width: 100%;
 
 		@media screen and (min-width: 768px) {
@@ -37,7 +34,11 @@
 	}
 
 	&-logo {
-		// flex: 0 1 10rem;
+		margin-right: 3rem;
+
+		@media screen and (min-width: 768px) {
+			margin-right: 1rem;
+		}
 	}
 
 	&-button {
