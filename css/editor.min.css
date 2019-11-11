@@ -6,7 +6,9 @@ blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
 table{border-collapse:collapse;border-spacing:0}
 *,*::before,*::after{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-html{font-size:13px;height:100%;width:100%;max-width:100%;overflow-x:hidden !important}
+*{-webkit-box-sizing:border-box !important;box-sizing:border-box !important}
+*::before,*::after{-webkit-box-sizing:inherit;box-sizing:inherit}
+html{font-size:13px;width:100%;max-width:100%;overflow-x:hidden !important}
 body{margin:0;height:100%;font-family:"Guillon",sans-serif;background-color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column;flex-flow:column;line-height:1.5;max-width:100%;overflow-x:hidden;width:100%}
 .bg-light,#landing-page{background-color:#f5f5f5}
 main{position:relative}
@@ -126,7 +128,7 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
 .editor-styles-wrapper .logo{display:block;max-width:100px;width:100%}
 .editor-styles-wrapper .dots{position:absolute;left:.6rem;top:calc(50% - 2rem);-webkit-transform:translateY(-50%);transform:translateY(-50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:10rem;-ms-flex-pack:distribute;justify-content:space-around;z-index:3}
 .editor-styles-wrapper .dots.frozen{pointer-events:none}
-.editor-styles-wrapper .dot{background-color:#6d6e70;background-clip:content-box;border-radius:100%;-webkit-box-sizing:content-box;box-sizing:content-box;height:1rem;opacity:.2;overflow:hidden;padding:5px;-webkit-transition:all .5s ease;transition:all .5s ease;width:1rem}
+.editor-styles-wrapper .dot{background-color:#6d6e70;border-radius:100%;height:18px;opacity:.2;overflow:hidden;padding:5px;-webkit-transition:all .5s ease;transition:all .5s ease;width:18px}
 .editor-styles-wrapper .dot.active{background-color:#25a9e0;opacity:1;-webkit-transition:all .5s .5s ease;transition:all .5s .5s ease}
 .editor-styles-wrapper .dot:not(.active){cursor:pointer}
 .editor-styles-wrapper .videos{height:calc(100vh - 240px);left:50%;max-width:100%;pointer-events:none;position:absolute;top:60px;-webkit-transform:translateX(-50%);transform:translateX(-50%);z-index:1;width:calc((100vh - 240px) * (15 / 13.1))}
