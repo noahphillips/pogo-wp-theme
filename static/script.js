@@ -1,12 +1,3 @@
-//
-// new Fullpage("#fullpage", {
-// 	onLeave: onLeave,
-// 	afterLoad: afterLoad,
-// 	scrollingSpeed: 2000,
-// 	paddingTop: "4.5rem"
-// });
-
-
 // fullpage customization
 jQuery('#fullpage').fullpage({
 	onLeave: onLeave,
@@ -56,7 +47,7 @@ function afterLoad(o, d, dir) {
 
 for (let i = 0; i < dots.length; i++) {
 	let dot = dots[i];
-	dot.addEventListener("click", e => {
+	dot.addEventListener("click", function (e) {
 		if(!dot.classList.contains("active")) {
 			fullpage_api.moveTo(i + 1);
 		}
@@ -64,7 +55,6 @@ for (let i = 0; i < dots.length; i++) {
 }
 
 function playVid(video) {
-	console.log('Play vid');
 	freeze();
 	video.addEventListener("ended", unfreeze);
 	video.play();
@@ -72,7 +62,7 @@ function playVid(video) {
 
 function fadeBetween(prevVid, vid) {
 	freeze();
-	setTimeout(() => {
+	setTimeout(function () {
 		prevVid.classList.add("fade");
 		vid.classList.add("active");
 		prevVid.classList.remove("active");

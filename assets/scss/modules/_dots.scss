@@ -24,15 +24,16 @@
 }
 
 .dot {
-	width: 1rem;
-	height: 1rem;
-	border-radius: 50%;
 	background-color: #6d6e70;
-	opacity: 0.2;
-	transition: all 0.5s ease;
-	box-sizing: content-box;
-	padding: 5px;
 	background-clip: content-box;
+	border-radius: 100%;
+	box-sizing: content-box;
+	height: 1rem;
+	opacity: 0.2;
+	overflow: hidden;
+	padding: 5px;
+	transition: all 0.5s ease;
+	width: 1rem;
 
 	&.active {
 		background-color: #25a9e0;

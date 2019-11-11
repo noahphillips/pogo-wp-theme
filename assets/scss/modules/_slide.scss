@@ -13,11 +13,12 @@
 		transition: opacity 0.2s ease-out;
 
 		@media screen and (min-width: 768px) {
-			padding: 1rem;
-		}
-
-		@media screen and (min-width: 768px) {
 			max-width: 750px;
+			padding: 2rem;
+
+			.ie11 & {
+				padding: 1rem;
+			}
 		}
 
 		&-arrow {
