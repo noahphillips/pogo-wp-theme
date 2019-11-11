@@ -26,6 +26,10 @@
 			top: -5.9rem;
 			width: 25vw;
 
+			.ie11 & {
+				right: 17px;
+			}
+
 			.home & {
 				top: auto;
 			}

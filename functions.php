@@ -271,6 +271,7 @@ class StarterSite extends Timber\Site {
 	public function enqueue_scripts_and_styles() {
 
 		wp_register_script( 'fullpage', get_stylesheet_directory_uri() . '/static/fullpage.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/fullpage.js' ), false );
+		// wp_register_script( 'fullpage', 'https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js', array( 'jquery' ), get_version( 'https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js' ), false );
 		wp_register_script( 'scriptjs', get_stylesheet_directory_uri() . '/static/script.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/script.js' ), true );
 		wp_register_script( 'events', get_stylesheet_directory_uri() . '/static/events.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/events.js' ), true );
 		wp_register_script( 'custom', get_stylesheet_directory_uri() . '/assets/js/custom.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/assets/js/custom.js' ), true );
@@ -937,7 +938,7 @@ class StarterSite extends Timber\Site {
 		 */
 		$wp_customize->add_setting( 'pogo_careers_page',
 			array(
-				'default' => $this->defaults['pogo_careers_page'],
+				'default'   => $this->defaults['pogo_careers_page'],
 				'transport' => 'refresh',
 //				'sanitize_callback' => 'absint'
 			)
@@ -956,12 +957,11 @@ class StarterSite extends Timber\Site {
 		 */
 		$wp_customize->add_control( 'pogo_careers_page',
 			array(
-				'label' => __( 'Careers Page', TEXT_DOMAIN ),
+				'label'   => __( 'Careers Page', TEXT_DOMAIN ),
 				'section' => 'general_settings',
-				'type' => 'dropdown-pages'
+				'type'    => 'dropdown-pages'
 			)
 		);
-
 
 
 		/**

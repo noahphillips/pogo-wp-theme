@@ -1,3 +1,21 @@
+window.onload = function () {
+	// only apply to IE
+	if (!/*@cc_on!@*/0) return;
+
+	// find every element to test
+	var all = document.getElementsByTagName('*'), i = all.length;
+
+	// fast reverse loop
+	while (i--) {
+		// if the scrollWidth (the real width) is greater than
+		// the visible width, then apply style changes
+		if (all[i].scrollWidth > all[i].offsetWidth) {
+			all[i].style['paddingBottom'] = '20px';
+			all[i].style['overflowY'] = 'hidden';
+		}
+	}
+};
+
 (function (window, document) {
 
 	/**

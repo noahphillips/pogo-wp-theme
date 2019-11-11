@@ -2,9 +2,9 @@
 
 	&-content {
 		height: 100%;
-		max-width: 100%;
+		max-width: 750px;
 		margin: 0 auto;
-		padding: 1rem 1rem 0.5rem 3rem;
+		padding: 1rem;
 		display: flex;
 		justify-content: flex-end;
 		flex-direction: column;
@@ -12,25 +12,6 @@
 		position: relative;
 		transition: opacity 0.2s ease-out;
 
-		@media screen and (min-width: 768px) {
-			max-width: 750px;
-			padding: 2rem;
-
-			.ie11 & {
-				padding: 1rem;
-			}
-		}
-
-		&-arrow {
-			display: flex;
-			justify-content: center;
-			margin-top: 1rem;
-
-			img {
-				height: 20px;
-				width: 35px;
-			}
-		}
 
 		@media screen and (min-width: 1200px) {
 			max-width: 900px;
@@ -50,8 +31,27 @@
 			}
 		}
 
+		&-arrow {
+			display: flex;
+			justify-content: center;
+			margin-top: 1rem;
+
+			@media screen and (min-width: 1200px) {
+				transform: translateY(-20px);
+			}
+
+			img {
+				height: 20px;
+				width: 35px;
+			}
+		}
+
 		&__body {
 			margin-bottom: 0;
+
+			@media screen and (min-width: 800px) {
+				margin-bottom: 1rem;
+			}
 		}
 
 		> * {
@@ -67,15 +67,15 @@
 
 		p {
 			font-size: 16px;
-			margin-bottom: 0;
 
 			@media screen and (min-width: 800px) {
-				font-size: 20px;
-			}
-
-			@media screen and (min-width: 1200px) {
+				// font-size: 20px;
 				font-size: 18px;
 			}
+
+			//@media screen and (min-width: 1200px) {
+			//	font-size: 18px;
+			//}
 		}
 
 		.active & {

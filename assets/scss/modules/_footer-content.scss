@@ -38,6 +38,17 @@
 		justify-items: start;
 		padding-bottom: 2rem;
 
+		.ie11 & {
+			display: flex;
+			justify-content: space-between;
+
+			> .widget {
+				&:last-of-type {
+					margin-right: 1rem;
+				}
+			}
+		}
+
 
 		li {
 			padding: .3rem 0;
