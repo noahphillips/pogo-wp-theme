@@ -242,6 +242,7 @@ object{display:block}
 .fp-destroyed .section{position:absolute;top:0;opacity:0;pointer-events:none;z-index:-1}
 .fp-destroyed .section.active{position:relative;opacity:1;pointer-events:all;z-index:1}
 .fp-destroyed .section.fp-completely,.fp-destroyed .section.active{-webkit-transition:opacity 1s ease;transition:opacity 1s ease}
+.fp-destroyed .section:not(:last-child){display:none}
 .fp-destroyed .slide-content{opacity:1}
 @media all and (min-width:40em){html{font-size:16px}
 .newsletter-signup form{max-width:470px;margin:0 auto}
