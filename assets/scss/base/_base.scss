@@ -131,3 +131,10 @@ a {
 	bottom: 0;
 	left: 0;
 }
+
+
+.main-info {
+	.ie11 & {
+		z-index: 2;
+	}
+}

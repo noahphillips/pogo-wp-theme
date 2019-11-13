@@ -30,6 +30,13 @@
 	&.frozen {
 		pointer-events: none;
 	}
+
+
+	.ie11 & {
+		z-index: 1;
+	}
+
+
 }
 
 .dot {
