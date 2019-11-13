@@ -1,13 +1,22 @@
 .videos {
-	height: calc(100vh - 240px);
+	height: calc(100vh - 300px);
 	left: 50%;
 	max-width: 100%;
 	pointer-events: none;
 	position: absolute;
-	top: 60px;
+	top: 20px;
 	transform: translateX(-50%);
 	z-index: 1;
 	width: calc((100vh - 240px) * (15 / 13.1));
+
+	@media all and (min-width: 400px) {
+		top: 40px;
+	}
+
+	@media all and (min-width: 640px) {
+		height: calc(100vh - 240px);
+		top: 60px;
+	}
 
 	@media all and (min-width: 1200px) {
 		top: 50px;

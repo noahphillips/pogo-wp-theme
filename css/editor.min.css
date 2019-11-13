@@ -130,12 +130,12 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
 .editor-styles-wrapper .is-white{color:#fff}
 .editor-styles-wrapper .is-tablet-hidden{display:block}
 .editor-styles-wrapper .logo{display:block;max-width:100px;width:100%}
-.editor-styles-wrapper .dots{position:absolute;left:.6rem;top:150px;-webkit-transform:translateY(-50%);transform:translateY(-50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:10rem;-ms-flex-pack:distribute;justify-content:space-around;z-index:3}
+.editor-styles-wrapper .dots{position:absolute;left:.6rem;top:150px;-webkit-transform:translateY(-50%);transform:translateY(-50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:10rem;-ms-flex-pack:distribute;justify-content:space-around;z-index:3;opacity:1}
 .editor-styles-wrapper .dots.frozen{pointer-events:none}
 .editor-styles-wrapper .dot{background-color:#6d6e70;border-radius:100%;height:18px;opacity:.2;overflow:hidden;padding:5px;-webkit-transition:all .5s ease;transition:all .5s ease;width:18px}
 .editor-styles-wrapper .dot.active{background-color:#25a9e0;opacity:1;-webkit-transition:all .5s .5s ease;transition:all .5s .5s ease}
 .editor-styles-wrapper .dot:not(.active){cursor:pointer}
-.editor-styles-wrapper .videos{height:calc(100vh - 240px);left:50%;max-width:100%;pointer-events:none;position:absolute;top:60px;-webkit-transform:translateX(-50%);transform:translateX(-50%);z-index:1;width:calc((100vh - 240px) * (15 / 13.1))}
+.editor-styles-wrapper .videos{height:calc(100vh - 300px);left:50%;max-width:100%;pointer-events:none;position:absolute;top:20px;-webkit-transform:translateX(-50%);transform:translateX(-50%);z-index:1;width:calc((100vh - 240px) * (15 / 13.1))}
 .editor-styles-wrapper .videos::after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:-webkit-gradient(linear,left top,left bottom,color-stop(75%,rgba(245,245,245,0)),color-stop(95%,#f5f5f5)),-webkit-gradient(linear,left top,right top,from(#f5f5f5),color-stop(10%,rgba(245,245,245,0)),color-stop(90%,rgba(245,245,245,0)),to(#f5f5f5));background:linear-gradient(rgba(245,245,245,0) 75%,#f5f5f5 95%),linear-gradient(to right,#f5f5f5,rgba(245,245,245,0) 10%,rgba(245,245,245,0) 90%,#f5f5f5);z-index:3}
 .editor-styles-wrapper .slide-content{height:100%;max-width:750px;margin:0 auto;padding:1rem;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;opacity:0;position:relative;-webkit-transition:opacity .2s ease-out;transition:opacity .2s ease-out}
 .editor-styles-wrapper .slide-content::before{content:'';display:block;position:absolute;height:100%;width:100%;background:transparent;background:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),color-stop(63%,rgba(255,255,255,0)),color-stop(71%,rgba(255,255,255,0.5)),to(#f5f5f5));background:linear-gradient(180deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 63%,rgba(255,255,255,0.5) 71%,#f5f5f5 100%)}
@@ -270,6 +270,9 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
 .editor-styles-wrapper .heading-icon{width:15rem}
 }@media screen and (min-width:76em){.editor-styles-wrapper .main-info .content{grid-column:3 / 4;grid-row:1 / 4;align-self:center}
 }@media all and (min-width:76em){.editor-styles-wrapper .main-info-copy{color:#fff;padding-right:5rem}
+}@media screen and (min-width:375px){.editor-styles-wrapper .dots{top:160px}
+}@media all and (min-width:400px){.editor-styles-wrapper .videos{top:40px}
+}@media all and (min-width:640px){.editor-styles-wrapper .videos{height:calc(100vh - 240px);top:60px}
 }@media screen and (min-width:640px){.editor-styles-wrapper .dots{top:calc(50% - 2rem)}
 }@media screen and (min-width:768px){.editor-styles-wrapper #header{max-width:100%}
 .editor-styles-wrapper .header-link-item{margin-right:2.5rem}
