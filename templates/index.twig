@@ -7,10 +7,14 @@
 	{% if(post.meta('videos') or post.meta('reverse_videos')) %}
 		<div class="videos">
 			{% for item in post.meta('videos') %}
-				<video src="{{ item.video }}" playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}"></video>
+				<video playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}">
+					<source src="{{ item.video }}#t=2" type="video/mp4" />
+				</video>
 			{% endfor %}
 			{% for item in post.meta('reverse_videos') %}
-				<video src="{{ item.video }}" playsinline muted preload="auto" id="r{{ loop.index }}"></video>
+				<video playsinline muted preload="auto" id="r{{ loop.index }}">
+					<source src="{{ item.video }}" type="video/mp4" />
+				</video>
 			{% endfor %}
 		</div>
 	{% endif %}
