@@ -130,7 +130,7 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
 .editor-styles-wrapper .is-white{color:#fff}
 .editor-styles-wrapper .is-tablet-hidden{display:block}
 .editor-styles-wrapper .logo{display:block;max-width:100px;width:100%}
-.editor-styles-wrapper .dots{position:absolute;left:.6rem;top:calc(50% - 2rem);-webkit-transform:translateY(-50%);transform:translateY(-50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:10rem;-ms-flex-pack:distribute;justify-content:space-around;z-index:3}
+.editor-styles-wrapper .dots{position:absolute;left:.6rem;top:150px;-webkit-transform:translateY(-50%);transform:translateY(-50%);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:10rem;-ms-flex-pack:distribute;justify-content:space-around;z-index:3}
 .editor-styles-wrapper .dots.frozen{pointer-events:none}
 .editor-styles-wrapper .dot{background-color:#6d6e70;border-radius:100%;height:18px;opacity:.2;overflow:hidden;padding:5px;-webkit-transition:all .5s ease;transition:all .5s ease;width:18px}
 .editor-styles-wrapper .dot.active{background-color:#25a9e0;opacity:1;-webkit-transition:all .5s .5s ease;transition:all .5s .5s ease}
@@ -270,6 +270,7 @@ a{-webkit-transition:color .3s;transition:color .3s;text-decoration:none;cursor:
 .editor-styles-wrapper .heading-icon{width:15rem}
 }@media screen and (min-width:76em){.editor-styles-wrapper .main-info .content{grid-column:3 / 4;grid-row:1 / 4;align-self:center}
 }@media all and (min-width:76em){.editor-styles-wrapper .main-info-copy{color:#fff;padding-right:5rem}
+}@media screen and (min-width:640px){.editor-styles-wrapper .dots{top:calc(50% - 2rem)}
 }@media screen and (min-width:768px){.editor-styles-wrapper #header{max-width:100%}
 .editor-styles-wrapper .header-link-item{margin-right:2.5rem}
 .editor-styles-wrapper .header-link-item__icon{display:inline-block;margin-right:1rem;height:46px;width:46px}

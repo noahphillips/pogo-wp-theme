@@ -274,7 +274,9 @@ object { display: block; }
 
 .logo { display: block; max-width: 100px; width: 100%; }
 
-.dots { position: absolute; left: .6rem; top: calc(50% - 2rem); -webkit-transform: translateY(-50%); transform: translateY(-50%); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: 10rem; -ms-flex-pack: distribute; justify-content: space-around; z-index: 3; }
+.dots { position: absolute; left: .6rem; top: 150px; -webkit-transform: translateY(-50%); transform: translateY(-50%); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: 10rem; -ms-flex-pack: distribute; justify-content: space-around; z-index: 3; }
+
+@media screen and (min-width: 640px) { .dots { top: calc(50% - 2rem); } }
 
 @media all and (min-width: 768px) { .dots { left: 2rem; top: calc(50% + 2.25rem); } }
 
