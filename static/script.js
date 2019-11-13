@@ -7,14 +7,14 @@ jQuery('#fullpage').fullpage({
 });
 
 
-let dotsContainer = document.querySelector(".dots");
-let dots = dotsContainer.querySelectorAll(".dot");
+var dotsContainer = document.querySelector(".dots");
+var dots = dotsContainer.querySelectorAll(".dot");
 
 function onLeave(o, d, dir) {
-	let prevVid = document.querySelector('video.active');
+	var prevVid = document.querySelector('video.active');
 
 	if(Math.abs(o.index - d.index) === 1) {
-		let vid = document.getElementById(
+		var vid = document.getElementById(
 			(dir === "down" ? 'f' : 'r') + o.index
 		);
 		if(prevVid !== vid) {
@@ -24,7 +24,7 @@ function onLeave(o, d, dir) {
 		}
 		playVid(vid);
 	} else {
-		let vid = document.getElementById(
+		var vid = document.getElementById(
 			(dir === "down" ? 'r' : 'f') + d.index
 		)
 		fadeBetween(prevVid, vid);
@@ -45,8 +45,8 @@ function afterLoad(o, d, dir) {
 	// }
 }
 
-for (let i = 0; i < dots.length; i++) {
-	let dot = dots[i];
+for (var i = 0; i < dots.length; i++) {
+	var dot = dots[i];
 	dot.addEventListener("click", function (e) {
 		if(!dot.classList.contains("active")) {
 			fullpage_api.moveTo(i + 1);

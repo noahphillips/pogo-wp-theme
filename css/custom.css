@@ -34,7 +34,7 @@ body { margin: 0; height: 100%; font-family: "Guillon", sans-serif; background-c
 
 main { position: relative; }
 
-strong { font-weight: 800; }
+strong { display: inline; font-weight: 800; }
 
 em { font-style: italic; }
 

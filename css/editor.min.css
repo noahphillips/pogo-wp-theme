@@ -12,7 +12,7 @@ html{font-size:13px;width:100%;max-width:100%;overflow-x:hidden !important}
 body{margin:0;height:100%;font-family:"Guillon",sans-serif;background-color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column;flex-flow:column;line-height:1.5;max-width:100%;overflow-x:hidden;width:100%}
 .bg-light,#landing-page{background-color:#f5f5f5}
 main{position:relative}
-strong{font-weight:800}
+strong{display:inline;font-weight:800}
 em{font-style:italic}
 button{text-decoration:none;outline:0;border:0}
 hr{border:0;border-top:1px solid rgba(59,59,60,0.5);margin:2.5rem 0}
