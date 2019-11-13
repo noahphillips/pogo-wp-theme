@@ -280,11 +280,11 @@ class StarterSite extends Timber\Site {
 		wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css', false, '1.0.0', 'all' );
 		wp_enqueue_style( 'custom', get_stylesheet_directory_uri() . '/css/custom.css', false, '1.0.0', 'all' );
 
-		wp_enqueue_script( 'fullpage' );
 		wp_enqueue_script( 'events' );
 		wp_enqueue_script( 'custom' );
 
 		if ( is_front_page() ) {
+			wp_enqueue_script( 'fullpage' );
 			wp_enqueue_script( 'scriptjs' );
 		}
 
