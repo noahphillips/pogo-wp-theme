@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-	console.log('jQuery init');
+	// console.log('jQuery init');
 
 // fullpage customization
 	$('#fullpage').fullpage({
@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 	var dots = dotsContainer.querySelectorAll(".dot");
 
 	function onLeave(o, d, dir) {
-		console.log('On leave function Run start\n');
+		// console.log('On leave function Run start\n');
 		var prevVid = document.querySelector('video.active');
 
 		if(Math.abs(o.index - d.index) === 1) {
@@ -37,21 +37,21 @@ jQuery(document).ready(function($) {
 		}
 		dots[o.index].classList.remove("active");
 		dots[d.index].classList.add("active");
-		console.log('On leave function Run end\n');
+		// console.log('On leave function Run end\n');
 	}
 
 	function afterLoad(o, d, dir) {
-		console.log('After Load function Run start\n');
+		// console.log('After Load function Run start\n');
 		if(d.isLast) {
 			fullpage_api.destroy();
 			window.scrollTo(0, 0);
 		}
 		// if (dir === null) {
 		//   fullpage_api.moveTo(1);
-		//   // console.log(fullpage_api);
+		//   // // console.log(fullpage_api);
 
 		// }
-		console.log('After Load function Run end\n');
+		// console.log('After Load function Run end\n');
 	}
 
 	for (var i = 0; i < dots.length; i++) {
@@ -64,43 +64,43 @@ jQuery(document).ready(function($) {
 	}
 
 	function playVid(video) {
-		console.log('Play Video function Run start\n');
+		// console.log('Play Video function Run start\n');
 		freeze();
 		video.addEventListener("ended", unfreeze);
 		video.play();
-		console.log('Play Video function Run end\n');
+		// console.log('Play Video function Run end\n');
 	}
 
 	function fadeBetween(prevVid, vid) {
-		console.log('Fade Between function Run start\n');
+		// console.log('Fade Between function Run start\n');
 		freeze();
 		setTimeout(function () {
 			prevVid.classList.add("fade");
 			vid.classList.add("active");
 			prevVid.classList.remove("active");
-			setTimeout(() => {
+			setTimeout(function() {
 				prevVid.classList.remove("fade");
 				prevVid.currentTime = 0;
 				unfreeze();
 			}, 1500);
 		}, 500);
-		console.log('Fade Between function Run end\n');
+		// console.log('Fade Between function Run end\n');
 	}
 
 	function freeze() {
-		console.log('Freeze function Run start\n');
+		// console.log('Freeze function Run start\n');
 		fullpage_api.setAllowScrolling(false);
 		fullpage_api.setKeyboardScrolling(false);
 		dotsContainer.classList.add("frozen");
-		console.log('Freeze function Run end\n');
+		// console.log('Freeze function Run end\n');
 	}
 
 	function unfreeze() {
-		console.log('Unfreeze function Run start\n');
+		// console.log('Unfreeze function Run start\n');
 		fullpage_api.setAllowScrolling(true);
 		fullpage_api.setKeyboardScrolling(true);
 		dotsContainer.classList.remove("frozen");
-		console.log('Unfreeze function Run end\n');
+		// console.log('Unfreeze function Run end\n');
 	}
 
 });
