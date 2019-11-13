@@ -278,6 +278,10 @@ html.fp-enabled,
 		pointer-events: none;
 		z-index: -1;
 
+		.ie11 & {
+			height: auto !important;
+		}
+
 		&.active {
 			position: relative;
 			opacity: 1;
@@ -292,6 +296,12 @@ html.fp-enabled,
 
 		&:not(:last-child) {
 			display: none;
+		}
+
+		.fp-tableCell {
+			.ie11 & {
+				height: auto !important;
+			}
 		}
 	}
 

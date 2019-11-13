@@ -8,11 +8,11 @@
 		<div class="videos">
 			{% for item in post.meta('videos') %}
 				<video playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}">
-					<source src="{{ item.video }}#t=2" type="video/mp4" />
+					<source src="{{ item.video }}{{ loop.index == 1 ? '#t=2' : '#t1' }}" type="video/mp4" />
 				</video>
 			{% endfor %}
 			{% for item in post.meta('reverse_videos') %}
-				<video playsinline muted preload="auto" id="r{{ loop.index }}">
+				<video playsinline muted preload="auto" id="r{{ loop.index }}" data-autoplay>
 					<source src="{{ item.video }}" type="video/mp4" />
 				</video>
 			{% endfor %}
