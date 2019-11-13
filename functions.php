@@ -271,7 +271,6 @@ class StarterSite extends Timber\Site {
 	public function enqueue_scripts_and_styles() {
 
 		wp_register_script( 'fullpage', get_stylesheet_directory_uri() . '/static/fullpage.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/fullpage.js' ), false );
-		// wp_register_script( 'fullpage', 'https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js', array( 'jquery' ), get_version( 'https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js' ), false );
 		wp_register_script( 'scriptjs', get_stylesheet_directory_uri() . '/static/script.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/script.js' ), true );
 		wp_register_script( 'events', get_stylesheet_directory_uri() . '/static/events.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/static/events.js' ), true );
 		wp_register_script( 'custom', get_stylesheet_directory_uri() . '/assets/js/custom.js', array( 'jquery' ), get_version( get_stylesheet_directory_uri() . '/assets/js/custom.js' ), true );
@@ -314,11 +313,8 @@ class StarterSite extends Timber\Site {
 					a.src = g;
 					m.parentNode.insertBefore(a, m)
 				})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
 				ga('create', '<?php echo get_theme_mod( 'pogo_ga_script' ); ?>', 'auto');
-
 				ga('send', 'pageview');
-
 			</script>
 		<?php endif; ?>
 		<?php
@@ -364,36 +360,36 @@ class StarterSite extends Timber\Site {
 	 */
 	function register_facebook_pixel() {
 		?>
-		<?php // if ( get_theme_mod( 'pogo_fbp_script' ) ) : ?>
-		<!-- Facebook Pixel Code -->
-		<script>
-			!function (f, b, e, v, n, t, s) {
-				if(f.fbq) return;
-				n = f.fbq = function () {
-					n.callMethod ?
-						n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-				};
-				if(!f._fbq) f._fbq = n;
-				n.push = n;
-				n.loaded = !0;
-				n.version = '2.0';
-				n.queue = [];
-				t = b.createElement(e);
-				t.async = !0;
-				t.src = v;
-				s = b.getElementsByTagName(e)[0];
-				s.parentNode.insertBefore(t, s)
-			}(window, document, 'script',
-				'https://connect.facebook.net/en_US/fbevents.js');
-			fbq('init', '<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>');
-			fbq('track', 'PageView');
-		</script>
-		<noscript><img height="1" width="1" style="display:none"
-					   src="https://www.facebook.com/tr?id=<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>"
-					   &ev=PageView&noscript=1"
-			/></noscript>
-		<!-- End Facebook Pixel Code -->
-		<?php // endif;
+		<?php if ( get_theme_mod( 'pogo_fbp_script' ) ) : ?>
+			<!-- Facebook Pixel Code -->
+			<script>
+				!function (f, b, e, v, n, t, s) {
+					if(f.fbq) return;
+					n = f.fbq = function () {
+						n.callMethod ?
+							n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+					};
+					if(!f._fbq) f._fbq = n;
+					n.push = n;
+					n.loaded = !0;
+					n.version = '2.0';
+					n.queue = [];
+					t = b.createElement(e);
+					t.async = !0;
+					t.src = v;
+					s = b.getElementsByTagName(e)[0];
+					s.parentNode.insertBefore(t, s)
+				}(window, document, 'script',
+					'https://connect.facebook.net/en_US/fbevents.js');
+				fbq('init', '<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>');
+				fbq('track', 'PageView');
+			</script>
+			<noscript><img height="1" width="1" style="display:none"
+						   src="https://www.facebook.com/tr?id=<?php echo get_theme_mod( 'pogo_fbp_script' ); ?>"
+						   &ev=PageView&noscript=1"
+				/></noscript>
+			<!-- End Facebook Pixel Code -->
+		<?php endif;
 	}
 
 
