@@ -53,6 +53,7 @@ jQuery(document).ready(function ($) {
 
 
 	for (var i = 0; i < dots.length; i++) {
+		var dot = dots[i];
 		dot.addEventListener('click', function (e) {
 			var count = e.target.getAttribute('data-count');
 			var currentDot = document.querySelector('#dot-' + count);
