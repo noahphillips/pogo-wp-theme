@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
 	// console.log('jQuery init');
 
@@ -11,12 +11,10 @@ jQuery(document).ready(function($) {
 	});
 
 
-
 	var dotsContainer = document.querySelector(".dots");
 	var dots = dotsContainer.querySelectorAll(".dot");
 
 	function onLeave(o, d, dir) {
-		// console.log('On leave function Run start\n');
 		var prevVid = document.querySelector('video.active');
 
 		if(Math.abs(o.index - d.index) === 1) {
@@ -37,11 +35,9 @@ jQuery(document).ready(function($) {
 		}
 		dots[o.index].classList.remove("active");
 		dots[d.index].classList.add("active");
-		// console.log('On leave function Run end\n');
 	}
 
 	function afterLoad(o, d, dir) {
-		// console.log('After Load function Run start\n');
 		if(d.isLast) {
 			fullpage_api.destroy();
 			window.scrollTo(0, 0);
@@ -51,14 +47,18 @@ jQuery(document).ready(function($) {
 		//   // // console.log(fullpage_api);
 
 		// }
-		// console.log('After Load function Run end\n');
 	}
 
+
+
+
 	for (var i = 0; i < dots.length; i++) {
-		var dot = dots[i];
-		dot.addEventListener("click", function (e) {
-			if(!dot.classList.contains("active")) {
-				fullpage_api.moveTo(i + 1);
+		dot.addEventListener('click', function (e) {
+			var count = e.target.getAttribute('data-count');
+			var currentDot = document.querySelector('#dot-' + count);
+
+			if(!currentDot.classList.contains('active')) {
+				fullpage_api.moveTo(count);
 			}
 		});
 	}
@@ -78,7 +78,7 @@ jQuery(document).ready(function($) {
 			prevVid.classList.add("fade");
 			vid.classList.add("active");
 			prevVid.classList.remove("active");
-			setTimeout(function() {
+			setTimeout(function () {
 				prevVid.classList.remove("fade");
 				prevVid.currentTime = 0;
 				unfreeze();
