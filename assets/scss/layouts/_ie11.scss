@@ -1,0 +1,40 @@
+body[style*="overflow: visible"] {
+
+	&.ie11 {
+		overflow-x: hidden !important;
+		overflow-y: scroll !important;
+
+		#pogo-body-container {
+			max-width: 100%;
+			position: relative;
+		}
+
+		.fullpage-wrapper {
+			transform: translateY(-68vh) !important;
+			max-height: 210px;
+			z-index: 4 !important;
+
+			@media screen and (min-height: 730px) {
+				transform: translateY(-75vh) !important;
+			}
+
+			@media screen and (min-height: 770px) {
+				transform: translateY(-77vh) !important;
+			}
+
+			@media screen and (min-height: 1000px) {
+				transform: translateY(-85vh) !important;
+			}
+
+		}
+
+		.videos {
+			position: relative;
+		}
+
+		.dots {
+			top: calc(35% + 3.75rem);
+		}
+
+	}
+}
