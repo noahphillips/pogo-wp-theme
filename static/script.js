@@ -7,7 +7,8 @@ jQuery(document).ready(function ($) {
 		onLeave: onLeave,
 		afterLoad: afterLoad,
 		scrollingSpeed: 2000,
-		paddingTop: "4.5rem"
+		paddingTop: '4.5rem',
+		licenseKey: 'EDE15887-A90149CB-BF02D47C-CCD9EDA8'
 	});
 
 
