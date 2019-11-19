@@ -54,7 +54,7 @@ object{display:block}
 .ie11 .main-info img{position:absolute;top:0;left:0}
 .main-info-img-wrap{margin:auto;display:grid;grid-template-columns:repeat(3,1fr);-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;max-width:100vw}
 .ie11 .main-info-img-wrap{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:100%;position:relative}
-.ie11 .main-info-img-wrap::before{content:'';background-image:url(../static/images/homepage-phone-bg.png) !important;background-repeat:no-repeat;background-size:cover;height:100%;left:0;position:absolute;top:0;width:100%}
+.ie11 .main-info-img-wrap::before{content:'';background-image:url(../static/images/homepage-phone-bg.png) !important;background-position:30%;background-repeat:no-repeat;background-size:cover;height:100%;left:0;position:absolute;top:0;width:100%}
 .main-info-img{grid-column:1 / 4;grid-row:1 / 4;max-height:85vh}
 .ie11 .main-info-img{max-height:100%;position:absolute;left:0;display:none}
 .main-info .mask{z-index:2}
@@ -289,7 +289,7 @@ body[style*="overflow: visible"].ie11 .dots{top:calc(35% + 3.75rem)}
 .header-content{max-width:1100px}
 }@media screen and (min-height:730px){body[style*="overflow: visible"].ie11 .fullpage-wrapper{-webkit-transform:translateY(-75vh) !important;transform:translateY(-75vh) !important}
 }@media screen and (min-height:770px){body[style*="overflow: visible"].ie11 .fullpage-wrapper{-webkit-transform:translateY(-77vh) !important;transform:translateY(-77vh) !important}
-}@media screen and (min-height:1000px){body[style*="overflow: visible"].ie11 .fullpage-wrapper{-webkit-transform:translateY(-85vh) !important;transform:translateY(-85vh) !important}
+}@media screen and (min-height:860px){body[style*="overflow: visible"].ie11 .fullpage-wrapper{-webkit-transform:translateY(-83vh) !important;transform:translateY(-83vh) !important}
 }@media(max-width:899px){.is-tablet-hidden{display:none}
 }@media all and (max-width:86em){.bkgrnd-circle-top-right{background-position:160% 0}
 .bkgrnd-circle-top-left{background-position:-40% 0}
