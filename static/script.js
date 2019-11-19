@@ -30,12 +30,12 @@ jQuery(document).ready(function ($) {
 			playVid(vid);
 		} else {
 			var vid = document.getElementById(
-				(dir === "down" ? 'r' : 'f') + d.index
+				(dir === 'down' ? 'r' : 'f') + d.index
 			)
 			fadeBetween(prevVid, vid);
 		}
-		dots[o.index].classList.remove("active");
-		dots[d.index].classList.add("active");
+		dots[o.index].classList.remove('active');
+		dots[d.index].classList.add('active');
 	}
 
 	function afterLoad(o, d, dir) {
@@ -51,16 +51,17 @@ jQuery(document).ready(function ($) {
 	}
 
 
-
-
 	for (var i = 0; i < dots.length; i++) {
 		var dot = dots[i];
 		dot.addEventListener('click', function (e) {
 			var count = e.target.getAttribute('data-count');
 			var currentDot = document.querySelector('#dot-' + count);
+			var fullPageWrapper = document.querySelector('.fullpage-wrapper');
 
-			if(!currentDot.classList.contains('active')) {
-				fullpage_api.moveTo(count);
+			if(!fullPageWrapper.classList.contains('fp-destroyed')) {
+				if(!currentDot.classList.contains('active')) {
+					fullpage_api.moveTo(count);
+				}
 			}
 		});
 	}

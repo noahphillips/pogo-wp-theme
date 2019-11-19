@@ -1,5 +1,10 @@
 body[style*="overflow: visible"] {
 
+
+	.dot {
+		cursor: initial;
+	}
+
 	&.ie11 {
 		overflow-x: hidden !important;
 		overflow-y: scroll !important;
