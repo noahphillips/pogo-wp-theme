@@ -140,12 +140,15 @@ function render_contact_details() {
 		<?php if ( $company_state ) { ?>
 			<?php echo $company_state; ?><br>
 		<?php } ?>
+		<?php if ( $company_phone ) { ?>
+			<a class="is-grey" href="tel:<?php echo $company_phone; ?>">Phone: <?php echo $company_phone; ?></a><br>
+		<?php } ?>
 		<p>&nbsp;</p>
 		<?php if ( $company_phone || $company_email ) { ?>
-			<div><?php _e('Customer Service',TEXT_DOMAIN ); ?></div>
+			<div><?php _e('Customer Support',TEXT_DOMAIN ); ?></div>
 		<?php } ?>
 		<?php if ( $company_phone ) { ?>
-			<a href="tel:<?php echo $company_phone; ?>">Phone: 855-IMI-POGO (<?php echo $company_phone; ?>)</a><br>
+			<a class="is-grey" href="tel:<?php echo $company_phone; ?>">Phone: 855-IMI-POGO (<?php echo $company_phone; ?>)</a><br>
 		<?php } ?>
 		<?php if ( $company_email ) { ?>
 			<div><?php echo $company_email; ?></div>
