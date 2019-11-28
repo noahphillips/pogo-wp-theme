@@ -1,10 +1,5 @@
 body[style*="overflow: visible"] {
 
-
-	.dot {
-		cursor: initial;
-	}
-
 	&.ie11 {
 		overflow-x: hidden !important;
 		overflow-y: scroll !important;
@@ -41,5 +36,8 @@ body[style*="overflow: visible"] {
 			top: calc(35% + 3.75rem);
 		}
 
+		.dot {
+			cursor: initial;
+		}
 	}
 }

@@ -158,8 +158,6 @@ object { display: block; }
 
 .modal-close { display: block; padding: .5rem; color: #3b3b3c; font-size: 2rem; position: absolute; top: 1rem; right: 1rem; font-weight: 700; cursor: pointer; }
 
-body[style*="overflow: visible"] .dot { cursor: initial; }
-
 body[style*="overflow: visible"].ie11 { overflow-x: hidden !important; overflow-y: scroll !important; }
 
 body[style*="overflow: visible"].ie11 #pogo-body-container { max-width: 100%; position: relative; }
@@ -175,6 +173,8 @@ body[style*="overflow: visible"].ie11 .fullpage-wrapper { -webkit-transform: tra
 body[style*="overflow: visible"].ie11 .videos { position: relative; }
 
 body[style*="overflow: visible"].ie11 .dots { top: calc(35% + 3.75rem); }
+
+body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 .flex-gap-sml { margin: 0 -0.5rem; }
 
