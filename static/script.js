@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+	var body = document.querySelector('body');
 	var dotsContainer = document.querySelector('.dots');
 	var dots = dotsContainer.querySelectorAll('.dot');
 
@@ -20,7 +21,7 @@ jQuery(document).ready(function ($) {
 			var fullPageWrapper = document.querySelector('.fullpage-wrapper');
 
 			// if(!fullPageWrapper.classList.contains('fp-destroyed')) { // Put back
-			if(!currentDot.classList.contains('active')) {
+			if(!currentDot.classList.contains('active') || !body.classList.contains('ie11')) {
 				fullpage_api.moveTo(count);
 			}
 			// }
