@@ -336,7 +336,9 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 @media all and (min-width: 1200px) { .videos { top: 50px; height: calc(100vh - 160px); width: calc((100vh - 160px) * (15 / 13.1)); } }
 
-.videos::after { content: ""; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(245, 245, 245, 0)), color-stop(95%, #f5f5f5)), -webkit-gradient(linear, left top, right top, from(#f5f5f5), color-stop(10%, rgba(245, 245, 245, 0)), color-stop(90%, rgba(245, 245, 245, 0)), to(#f5f5f5)); background: linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); z-index: 3; }
+.videos::after { content: ""; position: absolute; height: 100%; top: 0; left: 0; bottom: 0; right: 0; background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(245, 245, 245, 0)), color-stop(95%, #f5f5f5)), -webkit-gradient(linear, left top, right top, from(#f5f5f5), color-stop(10%, rgba(245, 245, 245, 0)), color-stop(90%, rgba(245, 245, 245, 0)), to(#f5f5f5)); background: linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); background: -webkit-linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), -webkit-linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); z-index: 3; }
+
+.iphone .videos::after { top: 40px; bottom: -10px; height: 120%; }
 
 .ie11 .videos { z-index: 1; }
 

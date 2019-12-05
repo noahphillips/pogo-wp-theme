@@ -3,6 +3,11 @@ jQuery(document).ready(function ($) {
 	var dotsContainer = document.querySelector('.dots');
 	var dots = dotsContainer.querySelectorAll('.dot');
 
+	$('video').each(function () {
+		this.preload = 'metadata';
+		this.load();
+	});
+
 	// fullpage customization
 	$('#fullpage').fullpage({
 		onLeave: onLeave,
@@ -30,6 +35,7 @@ jQuery(document).ready(function ($) {
 
 
 	function onLeave(o, d, dir) {
+		console.log('onLeave function');
 		var prevVid = document.querySelector('video.active');
 
 		if(Math.abs(o.index - d.index) === 1) {
@@ -53,6 +59,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function afterLoad(o, d, dir) {
+		console.log('After Load');
 		if(d.isLast) {
 			fullpage_api.destroy();
 			window.scrollTo(0, 0);
@@ -60,12 +67,14 @@ jQuery(document).ready(function ($) {
 	}
 
 	function playVid(video) {
+		console.log('Play Vid');
 		freeze();
 		video.addEventListener('ended', unfreeze);
 		video.play();
 	}
 
 	function fadeBetween(prevVid, vid) {
+		console.log('Fade Between');
 		freeze();
 		setTimeout(function () {
 			prevVid.classList.add('fade');
@@ -80,6 +89,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function freeze() {
+		console.log('Freeze function');
 		fullpage_api.setAllowScrolling(false);
 		fullpage_api.setKeyboardScrolling(false);
 		dotsContainer.classList.add('frozen');

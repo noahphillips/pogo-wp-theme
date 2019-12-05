@@ -7,18 +7,23 @@
 	{% if(post.meta('videos') or post.meta('reverse_videos')) %}
 		<div class="videos">
 			{% for item in post.meta('videos') %}
-				<video playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}">
-					<source src="{{ item.video }}#t1" type="video/mp4" />
-				</video>
+				{% if fn('wp_is_mobile') %}
+					<video {{ loop.index == 1 ? '_autoplay' : '' }} playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}" data-autoplay>
+						<source src="{{ item.video }}#t1" type="video/mp4"/>
+					</video>
+				{% else %}
+					<video playsinline muted preload="auto" id="f{{ loop.index -1 }}" class="{{ loop.index == 1 ? 'active' : '' }}" data-autoplay>
+						<source src="{{ item.video }}#t1" type="video/mp4"/>
+					</video>
+				{% endif %}
 			{% endfor %}
 			{% for item in post.meta('reverse_videos') %}
 				<video playsinline muted preload="auto" id="r{{ loop.index }}" data-autoplay>
-					<source src="{{ item.video }}#t1" type="video/mp4" />
+					<source src="{{ item.video }}#t1" type="video/mp4"/>
 				</video>
 			{% endfor %}
 		</div>
 	{% endif %}
-
 
 	<div id="fullpage">
 
