@@ -15,7 +15,7 @@
 
 
 	{% if(fields.items) %}
-		<ul class="{{ fields.has_bullets ? 'has-bullets' : '' }} {{ fields.font_body == 'small' ? 'font-body is-small' : '' }} has-bottom-marg-xlrg">
+		<ul class="{{ fields.has_bullets ? 'has-bullets' : '' }} is-{{fields.font_body}} has-bottom-marg-xlrg">
 			{% for item in fields.items %}
 				<li>{{ item.text }}</li>
 			{% endfor %}

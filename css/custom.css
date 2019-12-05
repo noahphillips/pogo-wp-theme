@@ -58,6 +58,12 @@ p.is-small, .font-body.is-small { font-size: 1rem; }
 
 p.is-small p, .font-body.is-small p { font-size: 1rem; }
 
+.is-normal { font-size: 1.125em; }
+
+.is-medium { font-size: 1.25em; }
+
+.is-large { font-size: 1.5em; }
+
 video { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
 
 video.active { opacity: 1; }
@@ -299,6 +305,8 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 .logo { display: block; max-width: 100px; width: 100%; }
 
 @media all and (min-width: 768px) { .logo { max-width: 116px; } }
+
+@media all and (min-width: 1200px) { .logo { max-width: 185px; } }
 
 .dots { position: absolute; left: .6rem; top: 150px; -webkit-transform: translateY(-50%); transform: translateY(-50%); display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: 10rem; -ms-flex-pack: distribute; justify-content: space-around; z-index: 3; opacity: 1; }
 
