@@ -259,7 +259,7 @@ body[style*="overflow: visible"].ie11 .dot{cursor:initial}
 .fp-destroyed .section{position:absolute;top:0;opacity:0;pointer-events:none;z-index:-1}
 .fp-destroyed .section.active{position:relative;opacity:1;pointer-events:all;z-index:1}
 .fp-destroyed .section.fp-completely,.fp-destroyed .section.active{-webkit-transition:opacity 1s ease;transition:opacity 1s ease}
-.fp-destroyed .section:not(:last-child){display:none}
+.ie11 .fp-destroyed .section:not(:last-child){display:none}
 .fp-destroyed .slide-content{opacity:1}
 @media all and (min-width:40em){html{font-size:16px}
 .newsletter-signup form{max-width:470px;margin:0 auto}
@@ -280,7 +280,7 @@ body[style*="overflow: visible"].ie11 .dot{cursor:initial}
 .header-logo{margin-right:1rem}
 }@media all and (min-width:768px){.logo{max-width:116px}
 .dots{left:2rem;top:calc(50% + 2.25rem)}
-}@media screen and (min-width:800px){.slide-content__body{margin-bottom:1rem}
+}@media screen and (min-width:800px){.slide-content__body{margin-bottom:1.6rem}
 .slide-content p{font-size:18px;margin-bottom:0}
 }@media(min-width:900px){.is-laptop-white{color:#fff}
 .is-laptop-grey{color:#3b3b3c}

@@ -358,7 +358,7 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 .slide-content__body { margin-bottom: 0; }
 
-@media screen and (min-width: 800px) { .slide-content__body { margin-bottom: 1rem; } }
+@media screen and (min-width: 800px) { .slide-content__body { margin-bottom: 1.6rem; } }
 
 .slide-content > * { position: relative; }
 
@@ -611,6 +611,6 @@ html.fp-enabled, .fp-enabled body { margin: 0; padding: 0; overflow: hidden; /*A
 
 .fp-destroyed .section.fp-completely, .fp-destroyed .section.active { -webkit-transition: opacity 1s ease; transition: opacity 1s ease; }
 
-.fp-destroyed .section:not(:last-child) { display: none; }
+.ie11 .fp-destroyed .section:not(:last-child) { display: none; }
 
 .fp-destroyed .slide-content { opacity: 1; }

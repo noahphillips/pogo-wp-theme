@@ -295,7 +295,11 @@ html.fp-enabled,
 		}
 
 		&:not(:last-child) {
-			display: none;
+
+			.ie11 & {
+				display: none;
+			}
+
 		}
 
 		.fp-tableCell {
