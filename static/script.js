@@ -8,6 +8,14 @@ jQuery(document).ready(function ($) {
 		this.load();
 	});
 
+	var videoPlayer= document.getElementById('f0');
+
+	videoPlayer.addEventListener('ended', function(){
+		this.pause();
+	}, false);
+
+
+
 	// fullpage customization
 	$('#fullpage').fullpage({
 		onLeave: onLeave,
@@ -35,13 +43,13 @@ jQuery(document).ready(function ($) {
 
 
 	function onLeave(o, d, dir) {
-		console.log('onLeave function');
 		var prevVid = document.querySelector('video.active');
 
 		if(Math.abs(o.index - d.index) === 1) {
 			var vid = document.getElementById(
-				(dir === 'down' ? 'f' : 'r') + o.index
+				(dir === 'down' ? 'f' + d.index : 'r' + o.index)
 			);
+
 			if(prevVid !== vid) {
 				prevVid.classList.remove('active');
 				vid.classList.add('active');
@@ -54,12 +62,12 @@ jQuery(document).ready(function ($) {
 			)
 			fadeBetween(prevVid, vid);
 		}
+
 		dots[o.index].classList.remove('active');
 		dots[d.index].classList.add('active');
 	}
 
 	function afterLoad(o, d, dir) {
-		console.log('After Load');
 		if(d.isLast) {
 			fullpage_api.destroy();
 			window.scrollTo(0, 0);
@@ -67,14 +75,12 @@ jQuery(document).ready(function ($) {
 	}
 
 	function playVid(video) {
-		console.log('Play Vid');
 		freeze();
 		video.addEventListener('ended', unfreeze);
 		video.play();
 	}
 
 	function fadeBetween(prevVid, vid) {
-		console.log('Fade Between');
 		freeze();
 		setTimeout(function () {
 			prevVid.classList.add('fade');
@@ -89,7 +95,6 @@ jQuery(document).ready(function ($) {
 	}
 
 	function freeze() {
-		console.log('Freeze function');
 		fullpage_api.setAllowScrolling(false);
 		fullpage_api.setKeyboardScrolling(false);
 		dotsContainer.classList.add('frozen');
