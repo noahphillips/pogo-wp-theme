@@ -123,12 +123,13 @@ function pogo_get_social_sites() {
  * @access public
  */
 function render_contact_details() {
-	$company_name    = get_theme_mod( 'company_name' ) ?: get_theme_mod( 'company_name' );
-	$company_address = get_theme_mod( 'company_address' ) ?: get_theme_mod( 'company_address' );
-	$company_state   = get_theme_mod( 'company_state' ) ?: get_theme_mod( 'company_state' );
-	$company_phone   = get_theme_mod( 'company_phone' ) ?: get_theme_mod( 'company_phone' );
-	$company_email   = get_theme_mod( 'company_email' ) ?: get_theme_mod( 'company_email' );
-	$company_map     = get_theme_mod( 'company_map' ) ?: get_theme_mod( 'company_email' );
+	$company_name            = get_theme_mod( 'company_name' ) ?: get_theme_mod( 'company_name' );
+	$company_address         = get_theme_mod( 'company_address' ) ?: get_theme_mod( 'company_address' );
+	$company_state           = get_theme_mod( 'company_state' ) ?: get_theme_mod( 'company_state' );
+	$company_phone           = get_theme_mod( 'company_phone' ) ?: get_theme_mod( 'company_phone' );
+	$company_phone_secondary = get_theme_mod( 'company_phone_secondary' ) ?: get_theme_mod( 'company_phone_secondary' );
+	$company_email           = get_theme_mod( 'company_email' ) ?: get_theme_mod( 'company_email' );
+	$company_map             = get_theme_mod( 'company_map' ) ?: get_theme_mod( 'company_email' );
 	?>
 	<address class="font-body">
 		<?php if ( $company_name ) { ?>
@@ -145,10 +146,10 @@ function render_contact_details() {
 		<?php } ?>
 		<p>&nbsp;</p>
 		<?php if ( $company_phone || $company_email ) { ?>
-			<div><?php _e('Customer Support',TEXT_DOMAIN ); ?></div>
+			<div><?php _e( 'Customer Support', TEXT_DOMAIN ); ?></div>
 		<?php } ?>
 		<?php if ( $company_phone ) { ?>
-			<a class="is-grey" href="tel:<?php echo $company_phone; ?>">Phone: 855-IMI-POGO (<?php echo $company_phone; ?>)</a><br>
+			<a class="is-grey" href="tel:<?php echo $company_phone; ?>">Phone: 855-IMI-POGO (<?php echo $company_phone_secondary; ?>)</a><br>
 		<?php } ?>
 		<?php if ( $company_email ) { ?>
 			<div><?php echo $company_email; ?></div>
@@ -1152,6 +1153,51 @@ class StarterSite extends Timber\Site {
 				'section'  => 'contact_details',
 				'type'     => 'text',
 				'label'    => __( 'Phone Number ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Phone Number setting example.
+		 *
+		 * - Setting: Phone Number
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Phone Number for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'company_phone_secondary',
+			// $args
+			array(
+				'default' => '855.946.8800',
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Phone Number
+		 *
+		 * Register the core "text" control to be used to configure the Phone Number Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'company_phone_secondary',
+			// $args
+			array(
+				'settings' => 'company_phone_secondary',
+				'section'  => 'contact_details',
+				'type'     => 'text',
+				'label'    => __( 'Phone Number secondary', TEXT_DOMAIN ),
 			)
 		);
 
