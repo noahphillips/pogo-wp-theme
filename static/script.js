@@ -8,12 +8,11 @@ jQuery(document).ready(function ($) {
 		this.load();
 	});
 
-	var videoPlayer= document.getElementById('f0');
+	var videoPlayer = document.getElementById('f0');
 
-	videoPlayer.addEventListener('ended', function(){
+	videoPlayer.addEventListener('ended', function () {
 		this.pause();
 	}, false);
-
 
 
 	// fullpage customization
@@ -42,13 +41,44 @@ jQuery(document).ready(function ($) {
 	}
 
 
-	function onLeave(o, d, dir) {
+	function onLeave(current, next, dir) {
 		var prevVid = document.querySelector('video.active');
+		console.log('Current index: ', current.index);
+		console.log('Next index: ', next.index);
+		console.log('Direction: ', dir);
 
-		if(Math.abs(o.index - d.index) === 1) {
-			var vid = document.getElementById(
-				(dir === 'down' ? 'f' + d.index : 'r' + o.index)
-			);
+
+		if(Math.abs(current.index - next.index) === 1) {
+			console.log('Math === 1');
+
+
+			if(current.index === 0) {
+
+				if(dir === 'down') {
+					var vid = document.getElementById('f1');
+				} else {
+					var vid = document.getElementById('r0');
+				}
+
+			} else if(current.index === 1) {
+				if(dir === 'down') {
+					var vid = document.getElementById('f2');
+				} else {
+					var vid = document.getElementById('r1');
+				}
+			} else if(current.index === 2) {
+				if(dir === 'down') {
+					var vid = document.getElementById('f3');
+				} else {
+					var vid = document.getElementById('r2');
+				}
+			} else if(current.index === 3) {
+				if(dir === 'down') {
+					var vid = document.getElementById('f3');
+				} else {
+					var vid = document.getElementById('r3');
+				}
+			}
 
 			if(prevVid !== vid) {
 				prevVid.classList.remove('active');
@@ -58,13 +88,13 @@ jQuery(document).ready(function ($) {
 			playVid(vid);
 		} else {
 			var vid = document.getElementById(
-				(dir === 'down' ? 'r' : 'f') + d.index
+				(dir === 'down' ? 'r' : 'f') + next.index
 			)
 			fadeBetween(prevVid, vid);
 		}
 
-		dots[o.index].classList.remove('active');
-		dots[d.index].classList.add('active');
+		dots[current.index].classList.remove('active');
+		dots[next.index].classList.add('active');
 	}
 
 	function afterLoad(o, d, dir) {
