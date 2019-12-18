@@ -46,11 +46,17 @@ hr { border: none; border-top: 1px solid rgba(59, 59, 60, 0.5); margin: 2.5rem 0
 
 .title.is-centered { max-width: 46rem; margin: auto; }
 
-.title-1 { font-size: 3.75rem; font-family: "Guillon-Thin", sans-serif; }
+.title-1 { font-size: 3rem; font-family: "Guillon-Thin", sans-serif; }
 
-.title-2 { font-family: "Guillon-Light", sans-serif; font-size: 2.25rem; }
+@media screen and (min-width: 768px) { .title-1 { font-size: 3.75rem; } }
 
-.title-3 { font-family: "Guillon", sans-serif; font-size: 1.25rem; }
+.title-2 { font-family: "Guillon-Light", sans-serif; font-size: 1.8rem; }
+
+@media screen and (min-width: 768px) { .title-2 { font-size: 2.25rem; } }
+
+.title-3 { font-family: "Guillon", sans-serif; font-size: 1rem; }
+
+@media screen and (min-width: 768px) { .title-3 { font-size: 1.25rem; } }
 
 p, .font-body { font-size: 1.25rem; font-family: "Guillon-Light", sans-serif; margin-bottom: 1em; }
 
@@ -330,19 +336,19 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 .videos { height: calc(100vh - 300px); left: 50%; max-width: 100%; pointer-events: none; position: absolute; top: 20px; -webkit-transform: translateX(-50%); transform: translateX(-50%); z-index: 1; width: calc((100vh - 240px) * (15 / 13.1)); }
 
-@media all and (min-width: 400px) { .videos { top: 40px; } }
-
 @media all and (min-width: 640px) { .videos { height: calc(100vh - 240px); top: 60px; } }
 
 @media all and (min-width: 1200px) { .videos { top: 50px; height: calc(100vh - 160px); width: calc((100vh - 160px) * (15 / 13.1)); } }
 
-.videos::after { content: ""; position: absolute; height: 100%; top: 0; left: 0; bottom: 0; right: 0; background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(245, 245, 245, 0)), color-stop(95%, #f5f5f5)), -webkit-gradient(linear, left top, right top, from(#f5f5f5), color-stop(10%, rgba(245, 245, 245, 0)), color-stop(90%, rgba(245, 245, 245, 0)), to(#f5f5f5)); background: linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); background: -webkit-linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), -webkit-linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); z-index: 3; }
+.videos::after { content: ""; position: absolute; top: 40px; bottom: -10px; height: 120%; left: 0; right: 0; background: -webkit-gradient(linear, left top, left bottom, color-stop(75%, rgba(245, 245, 245, 0)), color-stop(95%, #f5f5f5)), -webkit-gradient(linear, left top, right top, from(#f5f5f5), color-stop(10%, rgba(245, 245, 245, 0)), color-stop(90%, rgba(245, 245, 245, 0)), to(#f5f5f5)); background: linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); background: -webkit-linear-gradient(rgba(245, 245, 245, 0) 75%, #f5f5f5 95%), -webkit-linear-gradient(to right, #f5f5f5, rgba(245, 245, 245, 0) 10%, rgba(245, 245, 245, 0) 90%, #f5f5f5); z-index: 3; }
 
-.iphone .videos::after { top: 40px; bottom: -10px; height: 120%; }
+@media all and (min-width: 1024px) { .videos::after { height: 100%; top: 0; bottom: 0; } }
 
 .ie11 .videos { z-index: 1; }
 
-.slide-content { height: 100%; max-width: 750px; margin: 0 auto; padding: 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; opacity: 0; position: relative; -webkit-transition: opacity 0.2s ease-out; transition: opacity 0.2s ease-out; }
+.slide-content { height: 100%; max-width: 750px; margin: 0 auto; padding: 0.5rem 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; opacity: 0; position: relative; -webkit-transition: opacity 0.2s ease-out; transition: opacity 0.2s ease-out; }
+
+@media all and (min-width: 768px) { .slide-content { padding: 1rem; } }
 
 @media screen and (min-width: 1200px) { .slide-content { max-width: 900px; } }
 
@@ -354,7 +360,9 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 @media screen and (min-width: 1200px) { .slide-content-arrow { -webkit-transform: translateY(-20px); transform: translateY(-20px); } }
 
-.slide-content-arrow img { height: 20px; width: 35px; }
+.slide-content-arrow img { height: 13px; width: 22px; }
+
+@media screen and (min-width: 800px) { .slide-content-arrow img { height: 20px; width: 35px; } }
 
 .slide-content__body { margin-bottom: 0; }
 
@@ -364,7 +372,9 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 @media screen and (min-width: 1200px) { .slide-content h3 { font-size: 2rem; margin-bottom: 0.25em; } }
 
-.slide-content p { font-size: 16px; margin-bottom: 0; }
+.slide-content p { font-size: 15px; margin-bottom: 0; }
+
+@media screen and (min-width: 768px) { .slide-content p { font-size: 16px; } }
 
 @media screen and (min-width: 800px) { .slide-content p { font-size: 18px; margin-bottom: 0; } }
 
@@ -490,7 +500,9 @@ body[style*="overflow: visible"].ie11 .dot { cursor: initial; }
 
 .contact [data-map="google"] iframe { width: 100%; }
 
-.header-content { position: relative; width: 100%; max-width: 100%; padding: 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
+.header-content { position: relative; width: 100%; max-width: 100%; padding: 0.75rem 1rem; display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
+
+@media screen and (min-width: 768px) { .header-content { padding: 1rem; } }
 
 @media screen and (min-width: 1200px) { .header-content { max-width: 1100px; } }
 

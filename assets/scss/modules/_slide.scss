@@ -4,7 +4,7 @@
 		height: 100%;
 		max-width: 750px;
 		margin: 0 auto;
-		padding: 1rem;
+		padding: 0.5rem 1rem;
 		display: flex;
 		justify-content: flex-end;
 		flex-direction: column;
@@ -12,6 +12,9 @@
 		position: relative;
 		transition: opacity 0.2s ease-out;
 
+		@media all and (min-width: 768px) {
+			padding: 1rem;
+		}
 
 		@media screen and (min-width: 1200px) {
 			max-width: 900px;
@@ -41,8 +44,13 @@
 			}
 
 			img {
-				height: 20px;
-				width: 35px;
+				height: 13px;
+				width: 22px;
+
+				@media screen and (min-width: 800px) {
+					height: 20px;
+					width: 35px;
+				}
 			}
 		}
 
@@ -66,8 +74,13 @@
 		}
 
 		p {
-			font-size: 16px;
+			font-size: 15px;
 			margin-bottom: 0;
+
+
+			@media screen and (min-width: 768px) {
+				font-size: 16px;
+			}
 
 			@media screen and (min-width: 800px) {
 				font-size: 18px;

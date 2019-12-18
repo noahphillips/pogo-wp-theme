@@ -71,18 +71,30 @@ hr {
 	}
 
 	&-1 {
-		font-size: map-get($fontSizes, "xlrg" ) / 16 + rem;
+		font-size: map-get($fontSizes, "xlrg" ) / 20 + rem;
 		font-family: "Guillon-Thin", sans-serif;
+
+		@media screen and (min-width: 768px) {
+			font-size: map-get($fontSizes, "xlrg" ) / 16 + rem;
+		}
 	}
 
 	&-2 {
 		font-family: "Guillon-Light", sans-serif;
-		font-size: map-get($fontSizes, "lrg") / 16 + rem;
+		font-size: map-get($fontSizes, "lrg") / 20 + rem;
+
+		@media screen and (min-width: 768px) {
+			font-size: map-get($fontSizes, "lrg") / 16 + rem;
+		}
 	}
 
 	&-3 {
 		font-family: "Guillon", sans-serif;
-		font-size: map-get($fontSizes, "med") / 16 + rem;
+		font-size: map-get($fontSizes, "med") / 20 + rem;
+
+		@media screen and (min-width: 768px) {
+			font-size: map-get($fontSizes, "med") / 16 + rem;
+		}
 	}
 }
 
