@@ -43,14 +43,12 @@ jQuery(document).ready(function ($) {
 
 	function onLeave(current, next, dir) {
 		var prevVid = document.querySelector('video.active');
-		console.log('Current index: ', current.index);
-		console.log('Next index: ', next.index);
-		console.log('Direction: ', dir);
-
+		// console.log('Current index: ', current.index);
+		// console.log('Next index: ', next.index);
+		// console.log('Direction: ', dir);
 
 		if(Math.abs(current.index - next.index) === 1) {
-			console.log('Math === 1');
-
+			// console.log('Math === 1');
 
 			if(current.index === 0) {
 
@@ -87,6 +85,8 @@ jQuery(document).ready(function ($) {
 			}
 			playVid(vid);
 		} else {
+			// console.log('Math NOT !== 1');
+
 			var vid = document.getElementById(
 				(dir === 'down' ? 'r' : 'f') + next.index
 			)
