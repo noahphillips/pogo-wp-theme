@@ -35,13 +35,13 @@
 			<div class="header-content">
 				<a href="{{ site.url }}" class="header-logo"> <img src="{{ site_logo_url }}" alt="" class="logo"/> </a>
 				<div class="header-controls">
-					<a class="header-link-item" href="{{ site.url }}">
+					<a class="header-link-item" href="{{ header_home_link }}">
 						<img class="header-link-item__icon" src="{{ theme.link }}/static/images/icon-home.png" alt="">
-						<span class="header-link-item__text">{{ _e('Home', TEXT_DOMAIN) }}</span>
+						<span class="header-link-item__text">{{ header_home_text }}</span>
 					</a>
-					<a href="https://shop.presspogo.com/account/login" target="_blank" class="header-link-item">
+					<a href="{{ header_login_link }}" target="_blank" class="header-link-item">
 						<img class="header-link-item__icon" src="{{ theme.link }}/static/images/icon-user.png" alt="">
-						<span class="header-link-item__text">{{ _e('Login', TEXT_DOMAIN) }}</span>
+						<span class="header-link-item__text">{{ header_login_text }}</span>
 					</a>
 					{% include "menu.twig" with {'menu': menu.get_items} %}
 				</div>

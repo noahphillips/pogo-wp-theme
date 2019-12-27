@@ -17,6 +17,10 @@ global $post;
 
 $site_logo          = get_theme_mod( 'site_logo' );
 $footer_logo        = get_theme_mod( 'footer_logo' );
+$header_home_text   = get_theme_mod( 'pogo_header_home_text' );
+$header_home_link   = get_theme_mod( 'pogo_header_home_link' );
+$header_login_text  = get_theme_mod( 'pogo_header_login_text' );
+$header_login_link  = get_theme_mod( 'pogo_header_login_link' );
 $footer_copyrights  = get_theme_mod( 'pogo_footer_copyrights' );
 $gtm_script_tag     = get_theme_mod( 'pogo_gtm_script' );
 $show_footer_social = get_theme_mod( 'show_footer_social' ); // Show footer social checkbox
@@ -36,6 +40,10 @@ $context['sections']                = get_field( 'section', $post->ID );
 $context['disclaimer']              = get_field( 'page_disclaimer', $post->ID );
 $context['site_logo']               = $site_logo;
 $context['footer_logo']             = $footer_logo;
+$context['header_home_text']        = $header_home_text;
+$context['header_home_link']        = $header_home_link;
+$context['header_login_text']       = $header_login_text;
+$context['header_login_link']       = $header_login_link;
 $context['show_footer_social']      = $show_footer_social;
 $context['social_networks']         = $social_networks;
 $context['footer_copyrights']       = $footer_copyrights;

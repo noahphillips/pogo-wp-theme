@@ -17,6 +17,10 @@ $site_logo          = get_theme_mod( 'site_logo' );
 $footer_logo        = get_theme_mod( 'footer_logo' );
 $footer_copyrights  = get_theme_mod( 'pogo_footer_copyrights' );
 $gtm_script_tag     = get_theme_mod( 'pogo_gtm_script' );
+$header_home_text   = get_theme_mod( 'pogo_header_home_text' );
+$header_home_link   = get_theme_mod( 'pogo_header_home_link' );
+$header_login_text  = get_theme_mod( 'pogo_header_login_text' );
+$header_login_link  = get_theme_mod( 'pogo_header_login_link' );
 $show_footer_social = get_theme_mod( 'show_footer_social' ); // Show footer social checkbox
 $social_sites       = pogo_get_social_sites(); // Get all social sites as an array
 
@@ -38,6 +42,10 @@ $context['footer_logo']             = $footer_logo;
 $context['show_footer_social']      = $show_footer_social;
 $context['social_networks']         = $social_networks;
 $context['footer_copyrights']       = $footer_copyrights;
+$context['header_home_text']        = $header_home_text;
+$context['header_home_link']        = $header_home_link;
+$context['header_login_text']       = $header_login_text;
+$context['header_login_link']       = $header_login_link;
 $context['footer_main_widget_area'] = Timber::get_widgets( 'footer_main_widget_area' );
 $templates                          = array( 'index.twig' );
 

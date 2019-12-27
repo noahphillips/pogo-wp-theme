@@ -968,6 +968,188 @@ class StarterSite extends Timber\Site {
 		);
 
 
+
+
+		/**
+		 * Header Home Text setting example.
+		 *
+		 * - Setting: Header Home Text
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Header Home Text for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'pogo_header_home_text',
+			// $args
+			array(
+				'default' => __( 'Home', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Header Home Text
+		 *
+		 * Register the core "text" control to be used to configure the Header Home Text Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'pogo_header_home_text',
+			// $args
+			array(
+				'settings' => 'pogo_header_home_text',
+				'section'  => 'general_settings',
+				'type'     => 'text',
+				'label'    => __( 'Header Home Text ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Header Home Link setting example.
+		 *
+		 * - Setting: Header Home Link
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Header Home Link for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'pogo_header_home_link',
+			// $args
+			array(
+				'default' => __( 'https://presspogo.com/', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Header Home Link
+		 *
+		 * Register the core "text" control to be used to configure the Header Home Link Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'pogo_header_home_link',
+			// $args
+			array(
+				'settings' => 'pogo_header_home_link',
+				'section'  => 'general_settings',
+				'type'     => 'text',
+				'label'    => __( 'Header Home Link ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Header Login Text setting example.
+		 *
+		 * - Setting: Header Login Text
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Header Login Text for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'pogo_header_login_text',
+			// $args
+			array(
+				'default' => __( 'Login', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Header Login Text
+		 *
+		 * Register the core "text" control to be used to configure the Header Login Text Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'pogo_header_login_text',
+			// $args
+			array(
+				'settings' => 'pogo_header_login_text',
+				'section'  => 'general_settings',
+				'type'     => 'text',
+				'label'    => __( 'Header Login Text ', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Header Login Link setting example.
+		 *
+		 * - Setting: Header Login Link
+		 * - Control: text
+		 *
+		 * Uses a text to configure the user-defined Header Login Link for the Theme.
+		 *
+		 * @uses $wp_customize->add_setting() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_setting/
+		 * @link $wp_customize->add_setting() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+		 */
+		$wp_customize->add_setting(
+		// $id
+			'pogo_header_login_link',
+			// $args
+			array(
+				'default' => __( 'https://shop.presspogo.com/account/login', TEXT_DOMAIN ),
+			)
+		);
+
+
+		/**
+		 * Basic Text control.
+		 *
+		 * - Control: Basic: Text
+		 * - Setting: Header Login Link
+		 *
+		 * Register the core "text" control to be used to configure the Header Login Link Settings
+		 *
+		 * @uses $wp_customize->add_control() https://developer.wordpress.org/reference/classes/wp_customize_manager/add_control/
+		 * @link $wp_customize->add_control() https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+		 */
+		$wp_customize->add_control(
+		// $id
+			'pogo_header_login_link',
+			// $args
+			array(
+				'settings' => 'pogo_header_login_link',
+				'section'  => 'general_settings',
+				'type'     => 'text',
+				'label'    => __( 'Header Login Link ', TEXT_DOMAIN ),
+			)
+		);
+
+
 		/**
 		 * Contact Details Section
 		 *
@@ -994,7 +1176,7 @@ class StarterSite extends Timber\Site {
 			'company_name',
 			// $args
 			array(
-				'default' => 'Intuity Medical, Inc.',
+				'default' => __( 'Intuity Medical, Inc.', TEXT_DOMAIN ),
 			)
 		);
 
